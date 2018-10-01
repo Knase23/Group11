@@ -1,9 +1,9 @@
 public class Bullet extends GameObject {
 
-	public Bullet (arguments) {
+	public Bullet () {
 			
 	}
-	
+
 	public void move() {
 		
 	}

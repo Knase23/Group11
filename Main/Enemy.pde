@@ -1,9 +1,10 @@
 public class Enemy extends Form {
 
-	public Enemy (arguments){
+
+	public Enemy (){
 		sprite = loadImage("/images/enemyOne.gif");
 	}
-	
+
 	public void move() {
 		
 	}

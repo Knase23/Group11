@@ -8,9 +8,33 @@ public class Gamestate{
 	}
 	public void update() {
 		
+		playerShip.draw();
+
+		for (Enemy enemy : enemies) {
+			enemy.draw();
+			
+		}
+		for (Bullet bullet : enemyBullets) {
+			enemy.draw();
+		}
+		for (Bullet bullet : playerBullets) {
+			enemy.draw();
+		}	
 	}
 	public void draw() {
 		
+		playerShip.draw();
+
+		for (Enemy enemy : enemies) {
+			enemy.draw();
+			
+		}
+		for (Bullet bullet : enemyBullets) {
+			enemy.draw();
+		}
+		for (Bullet bullet : playerBullets) {
+			enemy.draw();
+		}		
 	}
 
 }

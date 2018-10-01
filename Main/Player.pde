@@ -1,6 +1,6 @@
 public class Player extends GameObject{
 
-	public Player (arguments) {
+	public Player () {
 		sprite = loadImage("/images/player.gif");
 		
 	}
