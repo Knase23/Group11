@@ -47,7 +47,7 @@ Extra stuff we might add:
   + Checks all collision between Player/Enemy and Bullets
 
 ##### -Input-
-    + Handles all Input
+  + Handles all Input
 
 ##### -GameObject-
   + hitbox (enemy, player) - determines size of Enemy and Player
