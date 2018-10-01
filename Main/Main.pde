@@ -11,6 +11,8 @@ void draw ()
 	long currentTime = millis();
 	deltatime =  (currentTime - time) * 0.001f;
 	
+	background(0);
+	
 	state.update();
 	state.draw();
 
