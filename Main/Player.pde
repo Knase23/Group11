@@ -18,7 +18,7 @@ public class Player extends GameObject{
 		
 		pushMatrix();
 		translate(this.position.x, this.position.y);
-		rotate(0);
+		rotate(HALF_PI);
 		
 		imageMode(CENTER);
 		image(sprite, 0, 0);
