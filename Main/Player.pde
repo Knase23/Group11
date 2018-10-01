@@ -1,6 +1,7 @@
 public class Player extends GameObject{
 
 	public Player (arguments) {
+		sprite = loadImage("/images/player.gif");
 		
 	}
 
@@ -13,7 +14,7 @@ public class Player extends GameObject{
 	}
 	
 	public void draw() {
-		
+		image(sprite, 0, 0);
 	}
 
 }
