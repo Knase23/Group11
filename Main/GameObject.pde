@@ -1,5 +1,6 @@
 public abstract class GameObject 
 {
+	PImage sprite;
 	PVector position, directionVelocity;
 	int hitBox;
 	boolean dead, outOfBounds;
