@@ -4,4 +4,16 @@ public class Player extends GameObject{
 		
 	}
 
+	public void move() {
+		
+	}
+
+	public void update() {
+		
+	}
+	
+	public void draw() {
+		
+	}
+
 }
