@@ -2,6 +2,7 @@ public class Enemy extends GameObject {
 
 
 	public Enemy (){
+		super(random(10, width/2),random(10, height/2), 50);
 		sprite = loadImage("/images/enemyOne.gif");
 	}
 

@@ -24,6 +24,7 @@ Mouse
 
 ### Fiender
 Ett skepp som följer ett mönster Fiender spawnar in random inom spelplanen. Mönstret beror på vad för typ av fienden är.
+ Fiender skjuter från ett håll.
 
 ### Future plans
 Extra stuff we might add:
