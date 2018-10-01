@@ -15,12 +15,19 @@ public class Player extends GameObject{
 	}
 	
 	public void draw() {
+		
+		pushMatrix();
+		translate(this.position.x, this.position.y);
+		rotate(0);
+		
 		imageMode(CENTER);
-		image(sprite, this.position.x, this.position.y);
+		image(sprite, 0, 0);
 		
 		stroke(0, 255, 0);
 		noFill();
-		ellipse(this.position.x, this.position.y, this.hitBox, this.hitBox);
+		ellipse(0, 0, this.hitBox, this.hitBox);
+
+		popMatrix();
 	}
 
 }
