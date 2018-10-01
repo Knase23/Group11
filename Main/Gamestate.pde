@@ -6,5 +6,11 @@ public class Gamestate{
 	public Gamestate () {
 		
 	}
+	public void update() {
+		
+	}
+	public void draw() {
+		
+	}
 
 }

@@ -7,5 +7,6 @@ void setup()
 
 void draw () 
 {
-
+	state.update();
+	state.draw();
 }
