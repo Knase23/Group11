@@ -2,30 +2,31 @@
 Group11 Project Space Shooter
 
 ##### -GameObject-
-         hitbox( enemy, player)
+         hitbox (enemy, player) - determines size of Enemy and Player
          vector (direction, velocity, position)
-         boolean (dead) (out of bounds)
+         Boolean (dead) (out of bounds)
 
 ##### -Collision-
-         checks all collision between player/enemy and bullets
-         + ship Collision
+         Checks all collision between Player/Enemy and Bullets
+         + Ship Collision
 
 ##### -Enemy-
-         + ship types and movement
+         + Different types of Enemy - Example: Different movement pattern, bigger bullets etc.
 ##### -Gamestate-
-         + start meny
+         + Start Menu
          Game over screen
-         press enter to start
+          - When player gets hit by a EnemyBullet
+         Press enter to start - Spawns in Enemies
          Running game
 
 ##### -Bullet-
-         travel one direction ( cannot change)
-         size
-         despawn out of bounds
-         player colour \= enemy colour
+         Travel one direction ( cannot change)
+         Size
+         Despawn out of bounds
+         Player colour \= Enemy colour
 
 ##### -Player-
-         size/sprite
+         Size/Sprite
 
 ##### -Input-
-         handles all player Input
+         Handles all Input
