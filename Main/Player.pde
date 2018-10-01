@@ -16,9 +16,12 @@ public class Player extends GameObject{
 	
 	public void draw() {
 		
+
+		float angle = atan2(this.position.y - mouseY,this.position.x - mouseX);				
+		
 		pushMatrix();
 		translate(this.position.x, this.position.y);
-		rotate(HALF_PI);
+		rotate(angle - HALF_PI);
 		
 		imageMode(CENTER);
 		image(sprite, 0, 0);
