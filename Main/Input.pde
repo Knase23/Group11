@@ -4,7 +4,6 @@ boolean isWpressed, isApressed, isSpressed, isDpressed; // isDpressed= true alwa
 boolean isLeftmouseclicked;
 void keyPressed() 
 {
-if(key == CODED){
 	if (keyCode == UP || keyCode == 87) {	 //keyCode 87 = w/W
 		isWpressed= true; 
 	}
@@ -17,13 +16,12 @@ if(key == CODED){
 	if (keyCode ==RIGHT || keyCode ==68) {	//keyCode 68 = d/D 
 		isDpressed = true;
 	}
-}
+
 }
 
 
 void keyReleased() 
 {
-	if(key == CODED){
 	if (keyCode == UP || keyCode == 87) {	 //keyCode 87 = w/W
 		isWpressed= false; 
 	}
@@ -36,7 +34,7 @@ void keyReleased()
 	if (keyCode ==RIGHT || keyCode ==68) {	//keyCode 68 = d/D 
 		isDpressed = false;
 	}
-}
+
 }
 
 void mousePressed()
