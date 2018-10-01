@@ -14,7 +14,7 @@ public abstract class GameObject
 	public GameObject(float x, float y, float diameter) 
 	{
 		this.position = new PVector(x,y);
-		this.hitBox = raidus;
+		this.hitBox = diameter;
 		this.dead = false;
 		this.outOfBounds = false;
 	}
