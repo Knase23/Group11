@@ -1,7 +1,7 @@
 
 
 boolean isWpressed, isApressed, isSpressed, isDpressed; // isDpressed= true always
-
+boolean isLeftmouseclicked;
 void keyPressed() 
 {
 if(key == CODED){
@@ -36,5 +36,20 @@ void keyReleased()
 	if (keyCode ==RIGHT || keyCode ==68) {	//keyCode 68 = d/D 
 		isDpressed = false;
 	}
+}
+}
+
+void mousePressed()
+ {
+	if (mouseButton == LEFT) {
+		isLeftmouseclicked = true;
+	}
+}
+
+
+void mouseRelesed () 
+{
+if (mouseButton == LEFT) {
+	isLeftmouseclicked = false;
 }
 }
