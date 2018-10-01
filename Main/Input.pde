@@ -8,7 +8,7 @@ if(key == CODED){
 	if (keyCode == UP || keyCode == 87) {	 //keyCode 87 = w/W
 		isWpressed= true; 
 	}
-	if (keyCode == LEFT || keyCode == 65 { 	//keyCode 65 = a/A
+	if (keyCode == LEFT || keyCode == 65) { 	//keyCode 65 = a/A
 		isApressed= true;
 	}
 	if (keyCode ==DOWN || keyCode ==83) {	//keyCode 83 = s/S
@@ -27,7 +27,7 @@ void keyReleased()
 	if (keyCode == UP || keyCode == 87) {	 //keyCode 87 = w/W
 		isWpressed= false; 
 	}
-	if (keyCode == LEFT || keyCode == 65 { 	//keyCode 65 = a/A
+	if (keyCode == LEFT || keyCode == 65) { 	//keyCode 65 = a/A
 		isApressed= false;
 	}
 	if (keyCode ==DOWN || keyCode ==83) {	//keyCode 83 = s/S
