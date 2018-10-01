@@ -21,7 +21,7 @@ if(key == CODED){
 }
 
 
-void void keyReleased() 
+void keyReleased() 
 {
 	if(key == CODED){
 	if (keyCode == UP || keyCode == 87) {	 //keyCode 87 = w/W
