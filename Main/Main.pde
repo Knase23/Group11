@@ -1,10 +1,9 @@
-
+Gamestate state;
 void setup() 
 {
-size (800, 800);
-  
+	size (800, 800);
+	state = new Gamestate();  
 }
-
 
 void draw () 
 {
