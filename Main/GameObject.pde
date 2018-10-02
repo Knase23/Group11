@@ -2,7 +2,7 @@ public abstract class GameObject
 {
 	PImage sprite;
 	PVector position, directionVelocity;
-	float hitBox;
+	float hitBox, speed;
 	boolean dead, outOfBounds;
 	public GameObject () 
 	{

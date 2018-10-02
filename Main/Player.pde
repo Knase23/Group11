@@ -3,6 +3,7 @@ public class Player extends GameObject{
 	public Player () {
 		super(height/2,width/2,50);
 		sprite = loadImage("/images/player.gif");
+		speed = 10;
 		
 	}
 
@@ -45,15 +46,15 @@ public class Player extends GameObject{
 
 	}
 	public void up(){
-		directionVelocity.y += -2 * deltaTime;
+		directionVelocity.y += -speed * deltaTime;
 	}
 	public void down(){
-		directionVelocity.y += 2 * deltaTime;
+		directionVelocity.y += speed * deltaTime;
 	}
 	public void left(){
-		directionVelocity.x += -2 * deltaTime;
+		directionVelocity.x += -speed * deltaTime;
 	}
 	public void right(){
-		directionVelocity.x += 2 * deltaTime;
+		directionVelocity.x += speed * deltaTime;
 	}
 }
