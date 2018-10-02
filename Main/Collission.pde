@@ -4,11 +4,11 @@
  float maxDistance = (go1.hitBox + go2.hitBox)/2;
 
 
-if(abs(x1 - x2) > maxDistance || abs(y1 - y2) > maxDistance)
+if(abs(go1.position.x - go2.position.x) > maxDistance || abs(go1.position.y - go2.position.y) > maxDistance)
   {
     return false;
   }
-  else if(dist(x1, y1, x2, y2) > maxDistance)
+  else if(dist(go1.position.x, go1.position.y, go2.position.x, go2.position.y) > maxDistance)
   {
     return false;
   }

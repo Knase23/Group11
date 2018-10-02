@@ -7,6 +7,7 @@ public class Bullet extends GameObject {
 
 		directionVelocity = direction;
 		directionVelocity.setMag(5);
+		hitBox= 5;
 	}
 
 	public void move() {
@@ -19,7 +20,7 @@ public class Bullet extends GameObject {
 	}
 	
 	public void draw() {
-		strokeWeight(5);
+		strokeWeight(hitBox);
 		stroke(#e25822);  // colour name  #e25822"flame" https://www.colorhexa.com/e25822
 		point(position.x, position.y);
 	}
