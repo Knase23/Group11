@@ -116,10 +116,11 @@ class Nebula
 
     public void update()
     {
-        if (position.y>=height+100)
+        if (position.y >= height+100)
         {
-            position.y=-(random(400, 200));
-            position.x= random(0, width);
+        	println("Nebula goes to top");
+            position.y -= height + 200;
+            position.x= random(10, width-10);
             velocity.y= random(0.2, 0.5);
             rotation = random(0, 359);
 	        nebulaAngleOne = random(0, 179);
@@ -142,12 +143,12 @@ class Nebula
 		
 		rotate(radians(nebulaAngleTwo));
 		tint(nebulaRed, nebulaGreen, nebulaBlue, nebulaAlpha/2);
-		image(nebulaSprite, 0, 0);
+		image(nebulaSprite2, 0, 0);
 		
 
 		rotate(radians(nebulaAngleTwo));
 		tint(nebulaRed, nebulaGreen, nebulaBlue, nebulaAlpha);
-		image(nebulaSprite2, 0, 0);
+		image(nebulaSprite, 0, 0);
 		popMatrix();
 		rotation+=0.03;
 
