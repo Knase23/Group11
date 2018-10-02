@@ -8,8 +8,10 @@ public class Bullet extends GameObject {
 		position.x = startpos.x;
 		position.y = startpos.y;
 
-		directionVelocity = direction;
+		directionVelocity.x = direction.x;
+		directionVelocity.y = direction.y;
 		directionVelocity.setMag(7);
+		
 		hitBox= 5;
 		if(playerShot)
 		{

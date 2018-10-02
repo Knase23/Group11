@@ -1,6 +1,7 @@
 public class Enemy extends GameObject {
-
-
+	float startTimeAfterShot = 0;
+	float millisekundsPast = 0;
+	float cooldownGuns = 2000;
 	public Enemy (){
 		super(random(0,10),random(10, height - 10), 50);
 		sprite = loadImage("/images/enemyOne.png");
@@ -17,8 +18,19 @@ public class Enemy extends GameObject {
 		if(position.x > height)
 			despawn = true;
 
+
 	}
-	
+	public boolean canShot()
+	{
+		millisekundsPast = millis() - startTimeAfterShot;
+		if(millisekundsPast > cooldownGuns)
+		{
+			startTimeAfterShot = millis();
+			return true;
+		} else{
+			return false;
+		}
+	}
 	public void draw() {
 		
 		pushMatrix();

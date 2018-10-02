@@ -26,6 +26,10 @@ public class Gamestate{
 		for (int i = 0; i < numberOfEnemies; ++i) {
 			enemies[i].update();
 			spawnEnemy();
+			if(((Enemy)enemies[i]).canShot())
+			{
+				shotFired(enemies[i]);
+			}
 		}		
 		for (int i = 0; i < numberOfPlayerBullets; ++i) {
 			playerBullets[i].update();
@@ -42,7 +46,11 @@ public class Gamestate{
 		
 		for (int i = 0; i < numberOfEnemyBullets; ++i) {
 			enemyBullets[i].update();
-			checkCollision(enemyBullets[i],playerShip);
+			if(checkCollision(enemyBullets[i],playerShip))
+			{
+				playerShip.despawn = true;
+				enemyBullets[i].despawn = true;
+			}
 		}
 			
 	}
@@ -63,8 +71,21 @@ public class Gamestate{
 		
 		for (int i = 0; i < numberOfEnemyBullets; ++i) {
 			enemyBullets[i].draw();
+		}
+
+		if(gameOver())
+		{
+			println("Game Over man, Game Over");
 		}		
 	}
+	public boolean gameOver()
+	{
+		if(playerShip.despawn)
+			return true;
+
+		return false;
+	}
+	
 	public void spawnEnemy() {
 
 		if(numberOfEnemies < maxNumberOfEnemies)
@@ -113,14 +134,14 @@ public class Gamestate{
 		{
 			if(numberOfEnemyBullets < maxNumberOfEnemyBullets)
 				{
-					enemyBullets[numberOfEnemyBullets] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y),true ); // new PVector needs to change, only temporary
+					enemyBullets[numberOfEnemyBullets] = new Bullet(go.position, go.directionVelocity ,false ); // new PVector needs to change, only temporary
 					numberOfEnemyBullets++;
 				} else 
 				{
 					for (int i = 0; i < numberOfEnemyBullets; ++i) {
 						if(enemyBullets[i].despawn)
 						{
-						 	enemyBullets[i] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y), true);
+						 	enemyBullets[i] = new Bullet(go.position, go.directionVelocity, false);
 						 	break;
 						}
 					}
