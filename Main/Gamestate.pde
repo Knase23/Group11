@@ -1,6 +1,6 @@
 public class GameState{
 	BackgroundManager backgroundManager;
-	int numberOfStars = 100;
+	int numberOfStars = 50;
 	int numberOfNebula = 4;
 
 	Player playerShip;
@@ -84,7 +84,8 @@ public class GameState{
 		if(gameOver())
 		{
 			println("Game Over man, Game Over");
-		}		
+		}	
+		println("frameRate: "+frameRate);	
 	}
 	public boolean gameOver()
 	{

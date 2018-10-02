@@ -4,7 +4,8 @@ LevelManager level = new LevelManager();
 void setup() 
 {
 	size (800, 800);
-	state = new GameState();  
+	state = new GameState();
+	frameRate(60);  
 }
 
 void draw () 
