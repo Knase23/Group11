@@ -1,7 +1,8 @@
 public class Player extends GameObject{
 	boolean wantToShot = false;
-	boolean shotIsFired = false;
-
+	float millisekundsPast = 0;
+	float timeAfterShot = 0; 
+	float cooldownGuns = 200;
 	public Player () {
 		super(height/2,width/2,50);
 		sprite = loadImage("/images/player.png");
@@ -45,14 +46,21 @@ public class Player extends GameObject{
 			right();
 		
 		wantToShot = isLeftmouseclicked;
-		if(shotIsFired && !wantToShot)
-		{
-			shotIsFired = false;
-		}
 
 		directionVelocity.mult(0.95f);
 		position.add(directionVelocity);
 
+	}
+	public boolean canShot()
+	{
+		millisekundsPast = millis() - timeAfterShot;
+		if(millisekundsPast > cooldownGuns || timeAfterShot < 1)
+		{
+			timeAfterShot = millis();
+			return true;
+		} else{
+			return false;
+		}
 	}
 	public void up(){
 		directionVelocity.y += -speed * deltaTime;

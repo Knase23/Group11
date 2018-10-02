@@ -3,7 +3,7 @@ class BackgroundManager
     Star[] stars;
     Nebula[] nebulas;
 
-    BackgroundManager(int numberOfStars, int numberOfNebula)
+    public BackgroundManager(int numberOfStars, int numberOfNebula)
     {
         stars = new Star[numberOfStars];
 
@@ -21,7 +21,7 @@ class BackgroundManager
 
     }
 
-    void update()
+     public void update()
     {
         for(int i = 0; i < stars.length; i++)
         {
@@ -35,7 +35,7 @@ class BackgroundManager
 
 
 
-    void draw()
+    public void draw()
     {
         for(int i = 0; i < stars.length; i++)
         {
@@ -55,27 +55,27 @@ class Star
     PVector position;
     PVector velocity;
 
-    Star(float x, float y)
+    public Star(float x, float y)
     {
         position = new PVector(x, y);
         velocity = new PVector(0,random(0.5, 3));
 
     }
 
-        void update()
+    public void update()
     {
-        if (position.y>=height+20)
+        if (position.y >= height+20)
         {
-            position.y=-(random(100, 20));
-            position.x= random(0, width);
-            velocity.y= random(0.5, 3);
+            position.y += -height;
+            //position.x = random(0, width);
+            // velocity.y = random(0.5, 3);
 
         }
         
         position.add(velocity);
     }
 
-    void draw()
+    public void draw()
     {
     	stroke(255,255,255,100);
     	strokeWeight(velocity.y+3);
@@ -91,13 +91,17 @@ class Nebula
 {
     PVector position;
     PVector velocity;
-    PImage nebulaSprite;
+    PImage nebulaSprite, nebulaSprite2;
     float rotation;
     float nebulaRed, nebulaGreen, nebulaBlue, nebulaAlpha;
     float nebulaAngleOne, nebulaAngleTwo;
 
-    Nebula(float x, float y)
+    public Nebula(float x, float y)
     {
+		nebulaSprite = loadImage("/images/nebulaOne.png");
+
+    	nebulaSprite2 = loadImage("/images/nebulaTwo.png");
+
         position = new PVector(x, y);
         velocity = new PVector(0,random(0.2, 0.5));
         rotation = random(0, 359);
@@ -110,7 +114,7 @@ class Nebula
 
     }
 
-        void update()
+    public void update()
     {
         if (position.y>=height+100)
         {
@@ -129,20 +133,21 @@ class Nebula
         position.add(velocity);
     }
 
-    void draw()
+    public void draw()
     {
     	pushMatrix();
     	imageMode(CENTER);
     	translate(position.x, position.y);
-    	nebulaSprite = loadImage("/images/nebulaTwo.png");
 		rotate(radians(rotation));
+		
 		rotate(radians(nebulaAngleTwo));
 		tint(nebulaRed, nebulaGreen, nebulaBlue, nebulaAlpha/2);
 		image(nebulaSprite, 0, 0);
-		nebulaSprite = loadImage("/images/nebulaOne.png");
+		
+
 		rotate(radians(nebulaAngleTwo));
 		tint(nebulaRed, nebulaGreen, nebulaBlue, nebulaAlpha);
-		image(nebulaSprite, 0, 0);
+		image(nebulaSprite2, 0, 0);
 		popMatrix();
 		rotation+=0.03;
 

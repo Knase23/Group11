@@ -26,7 +26,10 @@ public class GameState{
 	public void update() {
 		backgroundManager.update();
 		playerShip.update();
-		shotFired(playerShip);
+		if(playerShip.canShot() && playerShip.wantToShot)
+		{
+			shotFired(playerShip);
+		}
 
 
 		for (int i = 0; i < numberOfEnemies; ++i) {
@@ -118,27 +121,23 @@ public class GameState{
 	{
 		if (go instanceof Player) 
 		{
-			if(((Player)go).wantToShot && !((Player)go).shotIsFired) 
+			if(numberOfPlayerBullets < maxNumberOfPlayerBullets)
 			{
-				
-				if(numberOfPlayerBullets < maxNumberOfPlayerBullets)
-				{
-					playerBullets[numberOfPlayerBullets] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y),true ); // new PVector needs to change, only temporary
-					numberOfPlayerBullets++;
-				} else 
-				{
-					for (int i = 0; i < numberOfPlayerBullets; ++i) {
-						if(playerBullets[i].despawn)
-						{
-						 	playerBullets[i] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y), true);
-						 	break;
-						}
+				playerBullets[numberOfPlayerBullets] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y),true ); // new PVector needs to change, only temporary
+				numberOfPlayerBullets++;
+			} else 
+			{
+				for (int i = 0; i < numberOfPlayerBullets; ++i) {
+					if(playerBullets[i].despawn)
+					{
+					 	playerBullets[i] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y), true);
+					 	break;
 					}
-				
 				}
-				((Player)go).shotIsFired = true;	
+			
 			}
 		}
+	
 
 		if(go instanceof Enemy)
 		{
@@ -158,7 +157,7 @@ public class GameState{
 				
 				}
 		}
-
 	}
+	
 		
 }
