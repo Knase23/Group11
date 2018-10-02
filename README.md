@@ -1,5 +1,9 @@
 # Group11
 Group11 Project Space Shooter
+## Group Members
++ Jesper Uddefors
++ Kristoffer Svedlund
++ Patrik Johansson
 
 
 ### Gameplay
@@ -80,7 +84,7 @@ Hard parts:  Making the player model following the mouse and making the sprite i
 
 ###### Tuesday
 Everyone was very early and no one was late at all.
-The first parts of the game were actually made playable. Player can shoot, enemies move and can be shot. Death explosion was implemented. background was made. Journal was started. 
+The first parts of the game were actually made playable. Player can shoot, enemies move and can be shot. Death explosion was implemented. background was made. Journal was started. working backround looks all spacey and nice.
 
 Bugs: when trying to make the explosion fade out, when an enemy was hit by a bullet all ships became invisible.
 In backround, we wanted the nebulas to rotate. But at first the rotated once in a while and around the wrong point, which looked pretty goofy.
