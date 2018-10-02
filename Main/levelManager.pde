@@ -1,5 +1,6 @@
 public  class LevelManager {
 	int secondsPast;
+	int startTime = 0;
 	boolean spawn5sec = false;
 	boolean spawn9sec = false;
 	/* 
@@ -11,9 +12,13 @@ public  class LevelManager {
 	{
 
 	}
+	public LevelManager(int startT)
+	{
+		startTime = startT;
+	}
 	void update (GameState state) 
 	{
-		secondsPast = millis()/1000;
+		secondsPast = (millis()-startTime)/1000;
 		if (secondsPast % 5 == 4 && !spawn5sec){
 			println("Spawn Enemy");
 			spawn5sec = true;

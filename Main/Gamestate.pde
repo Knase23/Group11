@@ -62,11 +62,9 @@ public class GameState{
 		}
 			
 	}
-	public void draw() {
-		
-		
+	public void draw() 
+	{
 		background(0);
-		noCursor();
 		crosshair();
 		backgroundManager.draw();
 		playerShip.draw();
@@ -82,13 +80,8 @@ public class GameState{
 		
 		for (int i = 0; i < numberOfEnemyBullets; ++i) {
 			enemyBullets[i].draw();
-		}
-
-		if(gameOver())
-		{
-			println("Game Over man, Game Over");
 		}	
-		println("frameRate: "+frameRate);	
+			
 	}
 	public boolean gameOver()
 	{

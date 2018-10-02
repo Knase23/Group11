@@ -1,10 +1,9 @@
 float time, deltaTime;
-GameState state;
-LevelManager level = new LevelManager();
+StateHandler state;
 void setup() 
 {
 	size (800, 800);
-	state = new GameState();
+	state = new StateHandler();
 	frameRate(60);  
 }
 
@@ -13,10 +12,8 @@ void draw ()
 	long currentTime = millis();
 	deltaTime =  (currentTime - time) * 0.001f;
 	
-	background(0);
-
+	
 	state.update();
 	state.draw();
-	level.update(state);
 	time = currentTime;
 }
