@@ -67,3 +67,22 @@ Extra stuff we might add:
 
 ###### -Player-
   + Size/Sprite
+
+
+## Journal
+
+###### Monday
+We first came up with ideas on what we could do and what we should consider as part of the assignment and what we should do if later if we have time (extra assignment)(check File and class description).
+we made sure that the sharing of github was done correctly and made a conflict so we would all be able to see what happened and fix it.
+Sprites for player and enemy was made and added into the game. The playership followed the mouse, could shoot.
+
+Hard parts:  Making the player model following the mouse and making the sprite image rotate towards it.  
+
+###### Tuesday
+Everyone was very early and no one was late at all.
+The first parts of the game were actually made playable. Player can shoot, enemies move and can be shot. Death explosion was implemented. background was made. Journal was started. 
+
+Bugs: when trying to make the explosion fade out, when an enemy was hit by a bullet all ships became invisible.
+In backround, we wanted the nebulas to rotate. But at first the rotated once in a while and around the wrong point, which looked pretty goofy.
+
+Hard parts: The player was shooting once every frame, which meant 60 shots in a line.
