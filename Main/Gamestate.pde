@@ -29,9 +29,6 @@ public class Gamestate{
 		for (int i = 0; i < numberOfEnemyBullets; ++i) {
 			enemyBullets[i].update();
 		}
-		println("isWpressed: "+isWpressed);
-		if(isWpressed)
-			spawnEnemy();
 			
 	}
 	public void draw() {
