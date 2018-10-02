@@ -1,6 +1,24 @@
 
 
-// boolean checkCollision(float x1, float y1, float x2, float y2){ //x1,y1 is a ship or a bullet, x2,y2 is a bullet or a ship
+ boolean checkCollision(float x1, float y1, float x2, float y2){ //x1,y1 is a ship or a bullet, x2,y2 is a bullet or a ship
+ float maxDistance = size1 + size2;
+
+
+if(abs(x1 - x2) > maxDistance || abs(y1 - y2) > maxDistance)
+  {
+    return false;
+  }
+  else if(dist(x1, y1, x2, y2) > maxDistance)
+  {
+    return false;
+  }
+
+   else
+  {
+   return true;
+  }
+}
+
 
 //     if friendlyFire(objectOne, objectTwo) == true{
 //     	return false;
@@ -20,7 +38,7 @@
 // boolean friendlyFire(objectOne, objectTwo){
 // 	if
 // 	(objectOne instanceof player) && (objectTwo instanceof enemyBullet)
-// 	||
+// 	||	
 // 	(objectOne instanceof enemyBullet) && (objectTwo instanceof player)
 // 	||
 // 	(objectOne instanceof enemy) && (objectTwo instanceof myBullet)
@@ -34,3 +52,4 @@
 // 		return true;
 // 	}
 // }
+
