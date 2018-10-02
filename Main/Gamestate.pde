@@ -33,6 +33,8 @@ public class Gamestate{
 	}
 	public void draw() {
 		
+		noCursor();
+		crosshair();
 		playerShip.draw();
 
 		for (int i = 0; i < numberOfEnemies; ++i) {
