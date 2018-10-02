@@ -1,7 +1,10 @@
 public class Bullet extends GameObject {
 	color c;
+	float millisekundsPast;
+	float startAnimate = 0;
 	public Bullet (PVector startpos, PVector direction, boolean playerShot) {
 		super();
+		sprite = loadImage("/images/explode.png");
 		position.x = startpos.x;
 		position.y = startpos.y;
 
@@ -24,9 +27,14 @@ public class Bullet extends GameObject {
 
 	public void update() {
 		move();
-		if(position.x > width || position.x < 0 || position.y > height ||position.y < 0)
+		if(position.x > width  || position.x < 0 || position.y > height ||position.y < 0)
 		{
 			despawn = true;
+			outOfBounds = true;
+		}
+
+		if(despawn || outOfBounds)
+		{
 			directionVelocity = new PVector();
 		}
 	}
@@ -36,6 +44,19 @@ public class Bullet extends GameObject {
 			strokeWeight(hitBox);
 			stroke(c);  // colour name  #e25822"flame" https://www.colorhexa.com/e25822
 			point(position.x, position.y);
+		} else if(!outOfBounds && millisekundsPast < 500) {
+			imageMode(CENTER);
+			tint(255,255 - millisekundsPast);
+			image(sprite, position.x, position.y);
+			tint(255,255);
+
+			if(startAnimate == 0)
+			{
+				startAnimate = millis();
+			}
+			millisekundsPast = millis()- startAnimate;
+			println("millisekundsPast: "+millisekundsPast);
+
 		}
 	}
 
