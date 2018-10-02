@@ -64,5 +64,25 @@ public class Gamestate{
 			
 		}
 	}
+	public void shotFired (GameObject go) 
+	{
+		if (go instanceof Player) 
+		{
+			if(numberOfPlayerBullets < maxNumberOfPlayerBullets)
+			{
+				playerBullets[numberOfPlayerBullets] = new Bullet();
+				numberOfPlayerBullets++;
+			} else {
+				for (int i = 0; i < numberOfPlayerBullets; ++i) {
+					if(playerBullets[i].dead)
+					{
+					playerBullets[i] = new Bullet();
+					}
+				}
+			
+			}	
+		}
 
+	}
+		
 }
