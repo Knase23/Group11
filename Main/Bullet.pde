@@ -9,7 +9,7 @@ public class Bullet extends GameObject {
 		position.y = startpos.y;
 
 		directionVelocity = direction;
-		directionVelocity.setMag(5);
+		directionVelocity.setMag(7);
 		hitBox= 5;
 		if(playerShot)
 		{
@@ -45,6 +45,7 @@ public class Bullet extends GameObject {
 			stroke(c);  // colour name  #e25822"flame" https://www.colorhexa.com/e25822
 			point(position.x, position.y);
 		} else if(!outOfBounds && millisekundsPast < 500) {
+			
 			imageMode(CENTER);
 			tint(255,255 - millisekundsPast);
 			image(sprite, position.x, position.y);
@@ -55,8 +56,6 @@ public class Bullet extends GameObject {
 				startAnimate = millis();
 			}
 			millisekundsPast = millis()- startAnimate;
-			println("millisekundsPast: "+millisekundsPast);
-
 		}
 	}
 

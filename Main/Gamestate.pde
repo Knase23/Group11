@@ -21,6 +21,7 @@ public class Gamestate{
 	public void update() {
 		
 		playerShip.update();
+		shotFired(playerShip);
 
 		for (int i = 0; i < numberOfEnemies; ++i) {
 			enemies[i].update();
@@ -41,6 +42,7 @@ public class Gamestate{
 		
 		for (int i = 0; i < numberOfEnemyBullets; ++i) {
 			enemyBullets[i].update();
+			checkCollision(enemyBullets[i],playerShip);
 		}
 			
 	}
@@ -49,7 +51,7 @@ public class Gamestate{
 		noCursor();
 		crosshair();
 		playerShip.draw();
-		shotFired(playerShip);
+		
 
 		for (int i = 0; i < numberOfEnemies; ++i) {
 			enemies[i].draw();
