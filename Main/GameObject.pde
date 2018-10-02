@@ -10,6 +10,7 @@ public abstract class GameObject
 		this.hitBox = 10;
 		this.dead = false;
 		this.outOfBounds = false;
+		this.directionVelocity = new PVector();
 	}
 	public GameObject(float x, float y, float diameter) 
 	{
@@ -17,6 +18,7 @@ public abstract class GameObject
 		this.hitBox = diameter;
 		this.dead = false;
 		this.outOfBounds = false;
+		this.directionVelocity = new PVector();
 	}
 	public void update() 
 	{

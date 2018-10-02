@@ -6,12 +6,8 @@ public class Player extends GameObject{
 		
 	}
 
-	public void move() {
-		
-	}
-
 	public void update() {
-		
+		move();
 	}
 	
 	public void draw() {
@@ -33,4 +29,31 @@ public class Player extends GameObject{
 		popMatrix();
 	}
 
+	public void move() {
+		
+		if(isWpressed)
+			up();
+		if(isSpressed)
+			down();
+		if(isApressed)
+			left();
+		if(isDpressed)
+			right();
+
+		directionVelocity.mult(0.95f);
+		position.add(directionVelocity);
+
+	}
+	public void up(){
+		directionVelocity.y += -2 * deltaTime;
+	}
+	public void down(){
+		directionVelocity.y += 2 * deltaTime;
+	}
+	public void left(){
+		directionVelocity.x += -2 * deltaTime;
+	}
+	public void right(){
+		directionVelocity.x += 2 * deltaTime;
+	}
 }

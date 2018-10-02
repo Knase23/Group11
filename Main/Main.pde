@@ -1,4 +1,4 @@
-float time, deltatime;
+float time, deltaTime;
 Gamestate state;
 void setup() 
 {
@@ -9,10 +9,10 @@ void setup()
 void draw () 
 {
 	long currentTime = millis();
-	deltatime =  (currentTime - time) * 0.001f;
+	deltaTime =  (currentTime - time) * 0.001f;
 	
 	background(0);
-	
+
 	state.update();
 	state.draw();
 

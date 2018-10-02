@@ -17,7 +17,7 @@ public class Gamestate{
 	}
 	public void update() {
 		
-		playerShip.draw();
+		playerShip.update();
 
 		for (int i = 0; i < numberOfEnemies; ++i) {
 			enemies[i].update();
