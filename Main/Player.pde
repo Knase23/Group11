@@ -3,6 +3,7 @@ public class Player extends GameObject{
 	float millisekundsPast = 0;
 	float timeAfterShot = 0; 
 	float cooldownGuns = 200;
+	float mouseAngle = 0;
 	public Player () {
 		super(height/2,width/2,50);
 		sprite = loadImage("/images/player.png");
@@ -11,6 +12,8 @@ public class Player extends GameObject{
 	}
 
 	public void update() {
+		
+		mouseAngle = atan2(this.position.y - mouseY,this.position.x - mouseX);
 		move();
 		if(position.x > width)
 			position.x -= width;
@@ -25,11 +28,11 @@ public class Player extends GameObject{
 	public void draw() {
 		
 
-		float angle = atan2(this.position.y - mouseY,this.position.x - mouseX);				
+						
 		
 		pushMatrix();
 		translate(this.position.x, this.position.y);
-		rotate(angle - HALF_PI);
+		rotate(mouseAngle - HALF_PI);
 		
 		imageMode(CENTER);
 		image(sprite, 0, 0);

@@ -1,5 +1,6 @@
 public class GameState{
 	BackgroundManager backgroundManager;
+	Crosshair crosshair = new Crosshair();
 	int numberOfStars = 50;
 	int numberOfNebula = 4;
 
@@ -28,6 +29,7 @@ public class GameState{
 	}
 	public void update(int gameStartTime) {
 		backgroundManager.update();
+		crosshair.update();
 		playerShip.update();
 		playerSurvivalTime = millis() - gameStartTime;
 		if(playerShip.canShot() && playerShip.wantToShot)
@@ -70,7 +72,7 @@ public class GameState{
 	public void draw() 
 	{
 		background(0);
-		crosshair();
+		crosshair.draw();
 		backgroundManager.draw();
 		playerShip.draw();
 			
