@@ -83,7 +83,7 @@ public class Gamestate{
 					for (int i = 0; i < numberOfPlayerBullets; ++i) {
 						if(playerBullets[i].despawn)
 						{
-						 	playerBullets[i] = new Bullet(go.position, new PVector());
+						 	playerBullets[i] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y));
 						}
 					}
 				

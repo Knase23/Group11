@@ -12,12 +12,15 @@ public class Bullet extends GameObject {
 
 	public void move() {
 		position.add(directionVelocity);
-		
-
 	}
 
 	public void update() {
 		move();
+		if(position.x > width || position.x < 0 || position.y > height ||position.y < 0)
+		{
+			despawn = true;
+			directionVelocity = new PVector();
+		}
 	}
 	
 	public void draw() {
