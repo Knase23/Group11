@@ -12,6 +12,7 @@ public class Bullet extends GameObject {
 
 	public void move() {
 		position.add(directionVelocity);
+		
 
 	}
 

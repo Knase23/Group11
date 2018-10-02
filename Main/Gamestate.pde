@@ -58,7 +58,7 @@ public class Gamestate{
 			numberOfEnemies++;
 		} else {
 			for (int i = 0; i < numberOfEnemies; ++i) {
-				if(enemies[i].dead)
+				if(enemies[i].despawn)
 				{
 					enemies[i] = new Enemy();
 				}
@@ -76,12 +76,12 @@ public class Gamestate{
 				
 				if(numberOfPlayerBullets < maxNumberOfPlayerBullets)
 				{
-					playerBullets[numberOfPlayerBullets] = new Bullet(go.position, new PVector() ); // new PVector needs to change, only temporary
+					playerBullets[numberOfPlayerBullets] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y) ); // new PVector needs to change, only temporary
 					numberOfPlayerBullets++;
 				} else 
 				{
 					for (int i = 0; i < numberOfPlayerBullets; ++i) {
-						if(playerBullets[i].dead)
+						if(playerBullets[i].despawn)
 						{
 						 	playerBullets[i] = new Bullet(go.position, new PVector());
 						}
