@@ -2,6 +2,11 @@ public  class LevelManager {
 	int secondsPast;
 	boolean spawn5sec = false;
 	boolean spawn9sec = false;
+	/* 
+	 Level Manager is used to determine when enemys will spawn
+	 As of right now it spawns a enemy every 5th second and every 9th.
+	
+	*/
 	public LevelManager()
 	{
 
