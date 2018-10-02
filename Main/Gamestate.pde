@@ -78,7 +78,7 @@ public class Gamestate{
 				for (int i = 0; i < numberOfPlayerBullets; ++i) {
 					if(playerBullets[i].dead)
 					{
-					playerBullets[i] = new Bullet();
+					// playerBullets[i] = new Bullet();
 					}
 				}
 			
