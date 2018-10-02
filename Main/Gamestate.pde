@@ -9,6 +9,9 @@ public class Gamestate{
 		playerShip = new Player();
 		maxNumberOfEnemies = 10;
 		enemies = new Enemy[maxNumberOfEnemies];
+		for (int i = 0; i < maxNumberOfEnemies; ++i) {
+			spawnEnemy();
+		}
 		
 		maxNumberOfEnemyBullets = 30;
 		enemyBullets = new Bullet[maxNumberOfEnemyBullets];
@@ -21,9 +24,19 @@ public class Gamestate{
 
 		for (int i = 0; i < numberOfEnemies; ++i) {
 			enemies[i].update();
+			spawnEnemy();
 		}		
 		for (int i = 0; i < numberOfPlayerBullets; ++i) {
 			playerBullets[i].update();
+
+			for (int j = 0; j < numberOfEnemies && !playerBullets[i].despawn; ++j) {
+				if (checkCollision(playerBullets[i],enemies[j]))
+				{
+					enemies[j].despawn = true;
+					playerBullets[i].despawn = true;
+				}
+				
+			}
 		}
 		
 		for (int i = 0; i < numberOfEnemyBullets; ++i) {
@@ -61,6 +74,7 @@ public class Gamestate{
 				if(enemies[i].despawn)
 				{
 					enemies[i] = new Enemy();
+					break;
 				}
 				
 			}
@@ -76,14 +90,14 @@ public class Gamestate{
 				
 				if(numberOfPlayerBullets < maxNumberOfPlayerBullets)
 				{
-					playerBullets[numberOfPlayerBullets] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y) ); // new PVector needs to change, only temporary
+					playerBullets[numberOfPlayerBullets] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y),true ); // new PVector needs to change, only temporary
 					numberOfPlayerBullets++;
 				} else 
 				{
 					for (int i = 0; i < numberOfPlayerBullets; ++i) {
 						if(playerBullets[i].despawn)
 						{
-						 	playerBullets[i] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y));
+						 	playerBullets[i] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y), true);
 						 	break;
 						}
 					}
@@ -91,6 +105,25 @@ public class Gamestate{
 				}
 				((Player)go).shotIsFired = true;	
 			}
+		}
+
+		if(go instanceof Enemy)
+		{
+			if(numberOfEnemyBullets < maxNumberOfEnemyBullets)
+				{
+					enemyBullets[numberOfEnemyBullets] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y),true ); // new PVector needs to change, only temporary
+					numberOfEnemyBullets++;
+				} else 
+				{
+					for (int i = 0; i < numberOfEnemyBullets; ++i) {
+						if(enemyBullets[i].despawn)
+						{
+						 	enemyBullets[i] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y), true);
+						 	break;
+						}
+					}
+				
+				}
 		}
 
 	}

@@ -30,7 +30,7 @@ public abstract class GameObject
 	}
 	public void move()
 	{
-
+		position.add(directionVelocity);
 	}
 
 }

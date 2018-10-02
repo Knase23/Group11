@@ -2,16 +2,21 @@ public class Enemy extends GameObject {
 
 
 	public Enemy (){
-		super(random(10, width/2),random(10, height/2), 50);
+		super(random(0,10),random(10, height - 10), 50);
 		sprite = loadImage("/images/enemyOne.png");
+
+		directionVelocity.x = random(1.5, 4.5);
 	}
 
 	public void move() {
-		
+		position.add(directionVelocity);
 	}
 
 	public void update() {
-		
+		move();
+		if(position.x > height)
+			despawn = true;
+
 	}
 	
 	public void draw() {
