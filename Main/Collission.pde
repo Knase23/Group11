@@ -1,7 +1,7 @@
 
 
- boolean checkCollision(float x1, float y1, float x2, float y2){ //x1,y1 is a ship or a bullet, x2,y2 is a bullet or a ship
- float maxDistance = size1 + size2;
+ boolean checkCollision(GameObject go1, GameObject go2){ //x1,y1 is a ship or a bullet, x2,y2 is a bullet or a ship
+ float maxDistance = (go1.hitBox + go2.hitBox)/2;
 
 
 if(abs(x1 - x2) > maxDistance || abs(y1 - y2) > maxDistance)
