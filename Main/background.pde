@@ -1,24 +1,3 @@
-Star star;
-Nebula nebula;
-BackgroundManager backgroundManager;
-int numberOfStars = 100;
-int numberOfNebula = 4;
-
-void setup()
-{
-	size(800,600);
-	backgroundManager = new BackgroundManager(numberOfStars, numberOfNebula);
-}
-
-void draw()
-{
-
-	background(0);
-	backgroundManager.update();
-	backgroundManager.draw();
-
-}
-
 class BackgroundManager
 {
     Star[] stars;
@@ -66,6 +45,8 @@ class BackgroundManager
         {
             nebulas[j].draw();
         }
+        noTint();
+        noStroke();
     }
 }
 

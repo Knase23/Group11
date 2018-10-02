@@ -1,9 +1,10 @@
 float time, deltaTime;
-Gamestate state;
+GameState state;
+LevelManager level = new LevelManager();
 void setup() 
 {
 	size (800, 800);
-	state = new Gamestate();  
+	state = new GameState();  
 }
 
 void draw () 
@@ -15,6 +16,6 @@ void draw ()
 
 	state.update();
 	state.draw();
-
+	level.update(state);
 	time = currentTime;
 }

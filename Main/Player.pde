@@ -25,6 +25,7 @@ public class Player extends GameObject{
 		imageMode(CENTER);
 		image(sprite, 0, 0);
 		
+		strokeWeight(2);
 		stroke(0, 255, 0);
 		noFill();
 		ellipse(0, 0, this.hitBox, this.hitBox);

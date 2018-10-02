@@ -15,8 +15,13 @@ public class Enemy extends GameObject {
 
 	public void update() {
 		move();
-		if(position.x > height)
-			despawn = true;
+		if(position.x > width)
+			position.x -= width;
+		
+		if(despawn)
+		{
+			directionVelocity.mult(0);
+		}
 
 
 	}
@@ -32,19 +37,22 @@ public class Enemy extends GameObject {
 		}
 	}
 	public void draw() {
+		if(!despawn)
+		{
+			pushMatrix();
+			translate(this.position.x, this.position.y);
+			rotate(HALF_PI);
 		
-		pushMatrix();
-		translate(this.position.x, this.position.y);
-		rotate(HALF_PI);
-		
-		imageMode(CENTER);
-		image(sprite, 0, 0);
-		
-		stroke(0, 0, 255);
-		noFill();
-		ellipse(0, 0, this.hitBox, this.hitBox);
+			imageMode(CENTER);
+			image(sprite, 0, 0);
+			
+			strokeWeight(2);
+			stroke(0, 0, 255);
+			noFill();
+			ellipse(0, 0, this.hitBox, this.hitBox);
 
-		popMatrix();
+			popMatrix();
+		}
 	}
 
 }

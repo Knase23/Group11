@@ -1,32 +1,37 @@
-public class Gamestate{
+public class GameState{
+	BackgroundManager backgroundManager;
+	int numberOfStars = 100;
+	int numberOfNebula = 4;
+
 	Player playerShip;
 	Enemy[] enemies;
 	Bullet[] enemyBullets, playerBullets;
 	int maxNumberOfEnemies , numberOfEnemies = 0;
 	int maxNumberOfEnemyBullets, numberOfEnemyBullets = 0;
 	int maxNumberOfPlayerBullets, numberOfPlayerBullets = 0; 
-	public Gamestate () {
+	
+
+	public GameState () {
+		
+		backgroundManager = new BackgroundManager(numberOfStars, numberOfNebula);
+
 		playerShip = new Player();
 		maxNumberOfEnemies = 10;
-		enemies = new Enemy[maxNumberOfEnemies];
-		for (int i = 0; i < maxNumberOfEnemies; ++i) {
-			spawnEnemy();
-		}
-		
+		enemies = new Enemy[maxNumberOfEnemies];			
 		maxNumberOfEnemyBullets = 30;
 		enemyBullets = new Bullet[maxNumberOfEnemyBullets];
 		maxNumberOfPlayerBullets = 30;
 		playerBullets = new Bullet[maxNumberOfPlayerBullets];
 	}
 	public void update() {
-		
+		backgroundManager.update();
 		playerShip.update();
 		shotFired(playerShip);
 
+
 		for (int i = 0; i < numberOfEnemies; ++i) {
 			enemies[i].update();
-			spawnEnemy();
-			if(((Enemy)enemies[i]).canShot())
+			if(((Enemy)enemies[i]).canShot() && !enemies[i].despawn)
 			{
 				shotFired(enemies[i]);
 			}
@@ -35,7 +40,7 @@ public class Gamestate{
 			playerBullets[i].update();
 
 			for (int j = 0; j < numberOfEnemies && !playerBullets[i].despawn; ++j) {
-				if (checkCollision(playerBullets[i],enemies[j]))
+				if (checkCollision(playerBullets[i],enemies[j]) && !enemies[j].despawn)
 				{
 					enemies[j].despawn = true;
 					playerBullets[i].despawn = true;
@@ -56,10 +61,13 @@ public class Gamestate{
 	}
 	public void draw() {
 		
+		
+		background(0);
 		noCursor();
 		crosshair();
+		backgroundManager.draw();
 		playerShip.draw();
-		
+			
 
 		for (int i = 0; i < numberOfEnemies; ++i) {
 			enemies[i].draw();
@@ -85,14 +93,15 @@ public class Gamestate{
 
 		return false;
 	}
-	
+
 	public void spawnEnemy() {
 
 		if(numberOfEnemies < maxNumberOfEnemies)
 		{
 			enemies[numberOfEnemies] = new Enemy();
 			numberOfEnemies++;
-		} else {
+		} else 
+		{
 			for (int i = 0; i < numberOfEnemies; ++i) {
 				if(enemies[i].despawn)
 				{
