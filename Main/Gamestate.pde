@@ -4,6 +4,9 @@ public class GameState{
 	int numberOfNebula = 4;
 
 	Player playerShip;
+	int playerEnemyKills = 0;
+	int playerSurvivalTime = 0;
+
 	Enemy[] enemies;
 	Bullet[] enemyBullets, playerBullets;
 	int maxNumberOfEnemies , numberOfEnemies = 0;
@@ -23,9 +26,10 @@ public class GameState{
 		maxNumberOfPlayerBullets = 30;
 		playerBullets = new Bullet[maxNumberOfPlayerBullets];
 	}
-	public void update() {
+	public void update(int gameStartTime) {
 		backgroundManager.update();
 		playerShip.update();
+		playerSurvivalTime = millis() - gameStartTime;
 		if(playerShip.canShot() && playerShip.wantToShot)
 		{
 			shotFired(playerShip);
@@ -47,6 +51,7 @@ public class GameState{
 				{
 					enemies[j].despawn = true;
 					playerBullets[i].despawn = true;
+					playerEnemyKills++;
 				}
 				
 			}
