@@ -95,7 +95,7 @@ Hard parts: The player was shooting once every frame, which meant 60 shots in a 
 ###### Wednesday
 Plans:
 + Optimize background - It slowed down the framerate quite a bit. Need to sit down and optimize it together
- + Belive it is becouse we loaded in images in draw for the Nebulas.
+  + Belive it is becouse we loaded in images in draw for the Nebulas.
 + Seperate Start and Game Over code, so State handler have less rows
 + Start and discuss on a Point system
 + Start and discuss on a Health/Shield system
