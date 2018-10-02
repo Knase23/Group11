@@ -72,7 +72,7 @@ public class Gamestate{
 		{
 			if(numberOfPlayerBullets < maxNumberOfPlayerBullets)
 			{
-				playerBullets[numberOfPlayerBullets] = new Bullet();
+				playerBullets[numberOfPlayerBullets] = new Bullet(go.position, new PVector() ); // new PVector needs to change, only temporary
 				numberOfPlayerBullets++;
 			} else {
 				for (int i = 0; i < numberOfPlayerBullets; ++i) {
