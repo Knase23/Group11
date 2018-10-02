@@ -69,6 +69,7 @@ Extra stuff we might add:
   + Despawn out of bounds
   + Player colour \= Enemy colour
 
+
 ###### -Player-
   + Size/Sprite
 
@@ -92,5 +93,10 @@ In background, we wanted the nebulas to rotate. But at first the rotated once in
 Hard parts: The player was shooting once every frame, which meant 60 shots in a line.
 
 ###### Wednesday
-Planes:
+Plans:
 + Optimize background - It slowed down the framerate quite a bit. Need to sit down and optimize it together
+ + Belive it is becouse we loaded in images in draw for the Nebulas.
++ Seperate Start and Game Over code, so State handler have less rows
++ Start and discuss on a Point system
++ Start and discuss on a Health/Shield system
++ Start and discuss on Save and load for a Highscore list.
