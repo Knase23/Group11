@@ -2,7 +2,7 @@ public class Player extends GameObject{
 
 	public Player () {
 		super(height/2,width/2,50);
-		sprite = loadImage("/images/player.gif");
+		sprite = loadImage("/images/player.png");
 		speed = 10;
 		
 	}
