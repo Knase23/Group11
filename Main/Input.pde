@@ -45,7 +45,7 @@ void mousePressed()
 }
 
 
-void mouseRelesed () 
+void mouseReleased () 
 {
 if (mouseButton == LEFT) {
 	isLeftmouseclicked = false;

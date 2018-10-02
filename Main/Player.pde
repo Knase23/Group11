@@ -1,5 +1,7 @@
 public class Player extends GameObject{
 	boolean wantToShot = false;
+	boolean shotIsFired = false;
+
 	public Player () {
 		super(height/2,width/2,50);
 		sprite = loadImage("/images/player.png");
@@ -41,7 +43,11 @@ public class Player extends GameObject{
 		if(isDpressed)
 			right();
 		
-		wantToShot = isLeftmouseclicked; // might need changing
+		wantToShot = isLeftmouseclicked;
+		if(shotIsFired && !wantToShot)
+		{
+			shotIsFired = false;
+		}
 
 		directionVelocity.mult(0.95f);
 		position.add(directionVelocity);
@@ -59,4 +65,5 @@ public class Player extends GameObject{
 	public void right(){
 		directionVelocity.x += speed * deltaTime;
 	}
+	
 }

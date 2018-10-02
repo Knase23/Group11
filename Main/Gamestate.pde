@@ -36,6 +36,7 @@ public class Gamestate{
 		noCursor();
 		crosshair();
 		playerShip.draw();
+		shotFired(playerShip);
 
 		for (int i = 0; i < numberOfEnemies; ++i) {
 			enemies[i].draw();
@@ -70,19 +71,25 @@ public class Gamestate{
 	{
 		if (go instanceof Player) 
 		{
-			if(numberOfPlayerBullets < maxNumberOfPlayerBullets)
+			if(((Player)go).wantToShot && !((Player)go).shotIsFired) 
 			{
-				playerBullets[numberOfPlayerBullets] = new Bullet(go.position, new PVector() ); // new PVector needs to change, only temporary
-				numberOfPlayerBullets++;
-			} else {
-				for (int i = 0; i < numberOfPlayerBullets; ++i) {
-					if(playerBullets[i].dead)
-					{
-					// playerBullets[i] = new Bullet();
+				
+				if(numberOfPlayerBullets < maxNumberOfPlayerBullets)
+				{
+					playerBullets[numberOfPlayerBullets] = new Bullet(go.position, new PVector() ); // new PVector needs to change, only temporary
+					numberOfPlayerBullets++;
+				} else 
+				{
+					for (int i = 0; i < numberOfPlayerBullets; ++i) {
+						if(playerBullets[i].dead)
+						{
+						 	playerBullets[i] = new Bullet(go.position, new PVector());
+						}
 					}
+				
 				}
-			
-			}	
+				((Player)go).shotIsFired = true;	
+			}
 		}
 
 	}
