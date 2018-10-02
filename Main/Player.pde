@@ -12,6 +12,14 @@ public class Player extends GameObject{
 
 	public void update() {
 		move();
+		if(position.x > width)
+			position.x -= width;
+		if(position.x < 0)
+			position.x += width;
+		if(position.y > height)
+			position.y -= height;
+		if(position.y < 0)
+			position.y += height;
 	}
 	
 	public void draw() {
