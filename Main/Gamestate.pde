@@ -84,6 +84,7 @@ public class Gamestate{
 						if(playerBullets[i].despawn)
 						{
 						 	playerBullets[i] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y));
+						 	break;
 						}
 					}
 				
