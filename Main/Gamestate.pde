@@ -5,7 +5,7 @@ public class GameState{
 	int gameStartTime;
 
 	int numberOfStars = 50;
-	int numberOfNebula = 4;
+	int numberOfNebula = 10;
 
 	Player playerShip;
 	int playerEnemyKills = 0;

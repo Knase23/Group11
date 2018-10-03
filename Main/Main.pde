@@ -4,9 +4,10 @@ PImage[] assets;
 void setup() 
 {
 	size (800, 800);
+	LoadInAllImages(); 
 	state = new StateHandler();
 	frameRate(60);
-	LoadInAllImages();  
+	 
 }
 
 void draw () 
@@ -14,7 +15,7 @@ void draw ()
 	long currentTime = millis();
 	deltaTime =  (currentTime - time) * 0.001f;
 	
-	//println("FPS: "+frameRate);
+	println("FPS: "+frameRate);
 	state.update();
 	state.draw();
 	time = currentTime;
