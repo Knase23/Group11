@@ -23,11 +23,16 @@ public class GameState{
 		backgroundManager = new BackgroundManager(numberOfStars, numberOfNebula);
 
 		playerShip = new Player();
-		maxNumberOfEnemies = 10;
-		enemies = new Enemy[maxNumberOfEnemies];			
-		maxNumberOfEnemyBullets = 30;
+		
+
+		// Change this or make a function that makes us able to change during start menu or a settings menu.
+		maxNumberOfEnemies = 30;
+
+		enemies = new Enemy[maxNumberOfEnemies];	
+
+		maxNumberOfEnemyBullets = 100;
 		enemyBullets = new Bullet[maxNumberOfEnemyBullets];
-		maxNumberOfPlayerBullets = 30;
+		maxNumberOfPlayerBullets = 100;
 		playerBullets = new Bullet[maxNumberOfPlayerBullets];
 	}
 	public void update() {
@@ -78,8 +83,6 @@ public class GameState{
 		crosshair.draw();
 		backgroundManager.draw();
 		playerShip.draw();
-		
-			
 
 		for (int i = 0; i < numberOfEnemies; ++i) {
 			enemies[i].draw();
