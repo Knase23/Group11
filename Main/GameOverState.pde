@@ -14,9 +14,9 @@ public class GameOverState {
 		kills = prevGame.playerEnemyKills;
 		if(!ableToProceed)
 		{
-			timeUntilProceed = (2 - (millis()-gameOverStartStartTime)/1000);
+			timeUntilProceed = (2 - (time-gameOverStartStartTime)/1000);
 		}
-		ableToProceed = millis()-gameOverStartStartTime > 2000;
+		ableToProceed = time-gameOverStartStartTime > 2000;
 		//here we check collisions and update information that should be displayed
 	}
 	public void draw()
@@ -24,7 +24,12 @@ public class GameOverState {
 		// Here we draw out everything / display what we want on screen 
 		textAlign(CENTER);
 		rectMode(CENTER);
+		fill(0,125);
+		noStroke();
+		rect(width/2, height/2, width/2, height/2);
+		fill(255);
 		textSize(24);
+
 		text("Game Over maaan!!", width/2, height/2 - 50);
 		text("Game Over!!!", width/2, height/2 - 25);
 		

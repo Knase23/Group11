@@ -20,7 +20,7 @@ public  class LevelManager {
 	}
 	void update (GameState state) 
 	{
-		secondsPast = (millis()-startTime)/1000;
+		secondsPast = (time-startTime)/1000;
 		if(secondsPast != pastSecond)
 		{
 			secondsPastChanged = true;

@@ -49,10 +49,10 @@ public class HighScoreSystem {
 	public void draw()
 	{	textAlign(CENTER);
 		textSize(24);
-		text("Highscore", width/2, height/2 + 25);
+		text("Leaderboard", width/2, height/2 + 30);
 		textSize(14);
 		for (int i = 0; i < numberOfSavedScores; ++i) {
-			text(highScoresNames[i] + " : " + highScoresScore[i], width/2, height/2 +50 + (15 *i+1));
+			text(highScoresNames[i] + " : " + highScoresScore[i], width/2, height/2 + 50 + (15 *i+1));
 			}	
 	}
 	public void saveHighScores()

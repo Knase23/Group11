@@ -12,8 +12,8 @@ public class StartState {
 	{
 		back.update();
 		//here we check collisions and update information that should be displayed
-		timeUntilProceed = (2 - (millis()-startMenuStartTime)/1000);
-		ableToProceed = millis()-startMenuStartTime > 2000;
+		timeUntilProceed = (2 - (time-startMenuStartTime)/1000);
+		ableToProceed = time - startMenuStartTime > 2000;
 	}
 	public void draw()
 	{

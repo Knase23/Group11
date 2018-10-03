@@ -28,17 +28,19 @@ public class Bullet extends GameObject {
 	}
 
 	public void update() {
-		move();
-		if(position.x > width  || position.x < 0 || position.y > height ||position.y < 0)
-		{
-			despawn = true;
-			outOfBounds = true;
-		}
-
 		if(despawn || outOfBounds)
 		{
-			directionVelocity = new PVector();
+			
+		} else{
+			move();
+			if(position.x > width  || position.x < 0 || position.y > height ||position.y < 0)
+			{
+				despawn = true;
+				outOfBounds = true;
+			}
 		}
+
+		
 	}
 	
 	public void draw() {
@@ -55,9 +57,9 @@ public class Bullet extends GameObject {
 
 			if(startAnimate == 0)
 			{
-				startAnimate = millis();
+				startAnimate = time;
 			}
-			millisekundsPast = millis()- startAnimate;
+			millisekundsPast = time - startAnimate;
 		}
 	}
 

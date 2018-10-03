@@ -40,7 +40,7 @@ public class GameState{
 		backgroundManager.update();
 		crosshair.update();
 		playerShip.update();
-		playerSurvivalTime = millis() - gameStartTime;
+		playerSurvivalTime = time - gameStartTime;
 		score.survivalTimeToScore(playerSurvivalTime);
 		if(playerShip.canShot() && playerShip.wantToShot)
 		{
@@ -48,34 +48,45 @@ public class GameState{
 		}
 
 
-		for (int i = 0; i < numberOfEnemies; ++i) {
-			enemies[i].update();
-			if(((Enemy)enemies[i]).canShot() && !enemies[i].despawn)
+		for (int i = 0; i < maxNumberOfEnemies; ++i) {
+			if(enemies[i] != null)
 			{
-				shotFired(enemies[i]);
+				enemies[i].update();
+				if(((Enemy)enemies[i]).canShot())
+				{
+					shotFired(enemies[i]);
+				}
 			}
 		}		
-		for (int i = 0; i < numberOfPlayerBullets; ++i) {
-			playerBullets[i].update();
+		for (int i = 0; i < maxNumberOfPlayerBullets; ++i) {
+			if(playerBullets[i] != null)
+			{
+				playerBullets[i].update();
 
-			for (int j = 0; j < numberOfEnemies && !playerBullets[i].despawn; ++j) {
-				if (checkCollision(playerBullets[i],enemies[j]) && !enemies[j].despawn)
-				{
-					enemies[j].despawn = true;
-					playerBullets[i].despawn = true;
-					score.killTheEnemy();
-				}
+				for (int j = 0; j < maxNumberOfEnemies; ++j) {
+
+					if (enemies[j] != null && checkCollision(playerBullets[i],enemies[j]))
+					{
+						enemies[j].despawn = true;
+						playerBullets[i].despawn = true;
+						score.killTheEnemy();
+					}
 				
+				}
 			}
 		}
 		
-		for (int i = 0; i < numberOfEnemyBullets; ++i) {
-			enemyBullets[i].update();
-			if(checkCollision(enemyBullets[i],playerShip) && !enemyBullets[i].despawn)
-			{
-				playerShip.despawn = true;
-				enemyBullets[i].despawn = true;
-			}
+		for (int i = 0; i < maxNumberOfEnemyBullets; ++i)
+		 {
+		 	if(enemyBullets[i] != null)
+		 	{
+				enemyBullets[i].update();
+				if(checkCollision(enemyBullets[i],playerShip))
+				{
+					playerShip.despawn = true;
+					enemyBullets[i].despawn = true;
+				}
+		 	}
 		}
 			
 	}
@@ -86,16 +97,24 @@ public class GameState{
 		backgroundManager.draw();
 		playerShip.draw();
 
-		for (int i = 0; i < numberOfEnemies; ++i) {
-			enemies[i].draw();
+		for (int i = 0; i < maxNumberOfEnemies; ++i) {
+			if(enemies[i] != null){
+
+				enemies[i].draw();
+			}
 		}
 		
-		for (int i = 0; i < numberOfPlayerBullets; ++i) {
-			playerBullets[i].draw();
+		for (int i = 0; i < maxNumberOfPlayerBullets; ++i) {
+			if(playerBullets[i] != null)
+			{
+				playerBullets[i].draw();
+			}
 		}
 		
-		for (int i = 0; i < numberOfEnemyBullets; ++i) {
-			enemyBullets[i].draw();
+		for (int i = 0; i < maxNumberOfEnemyBullets; ++i) {
+			if(enemyBullets[i] != null){
+				enemyBullets[i].draw();
+			}	
 		}	
 		score.score();
 			
@@ -110,62 +129,41 @@ public class GameState{
 
 	public void spawnEnemy() {
 
-		if(numberOfEnemies < maxNumberOfEnemies)
-		{
-			enemies[numberOfEnemies] = new Enemy();
-			numberOfEnemies++;
-		} else 
-		{
-			for (int i = 0; i < numberOfEnemies; ++i) {
-				if(enemies[i].despawn)
-				{
-					enemies[i] = new Enemy();
-					break;
-				}
-				
+		for (int i = 0; i < maxNumberOfEnemies; ++i) {
+			if( enemies[i] == null || enemies[i].despawn)
+			{
+				enemies[i] = new Enemy();
+				break;
 			}
-			
 		}
 	}
 	public void shotFired (GameObject go) 
 	{
 		if (go instanceof Player) 
 		{
-			if(numberOfPlayerBullets < maxNumberOfPlayerBullets)
-			{
-				playerBullets[numberOfPlayerBullets] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y),true ); // new PVector needs to change, only temporary
-				numberOfPlayerBullets++;
-			} else 
-			{
-				for (int i = 0; i < numberOfPlayerBullets; ++i) {
-					if(playerBullets[i].despawn)
-					{
-					 	playerBullets[i] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y), true);
-					 	break;
-					}
+			for (int i = 0; i < maxNumberOfPlayerBullets; ++i) {
+				if(playerBullets[i] == null || playerBullets[i].despawn)
+				{
+				 	playerBullets[i] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y), true);
+				 	break;
 				}
-			
 			}
+			
+			
 		}
 	
 
 		if(go instanceof Enemy)
 		{
-			if(numberOfEnemyBullets < maxNumberOfEnemyBullets)
+			for (int i = 0; i < maxNumberOfEnemyBullets; ++i) {
+				if( enemyBullets[i] == null || enemyBullets[i].despawn)
 				{
-					enemyBullets[numberOfEnemyBullets] = new Bullet(go.position, go.directionVelocity ,false ); // new PVector needs to change, only temporary
-					numberOfEnemyBullets++;
-				} else 
-				{
-					for (int i = 0; i < numberOfEnemyBullets; ++i) {
-						if(enemyBullets[i].despawn)
-						{
-						 	enemyBullets[i] = new Bullet(go.position, go.directionVelocity, false);
-						 	break;
-						}
-					}
-				
+				 	enemyBullets[i] = new Bullet(go.position, go.directionVelocity, false);
+				 	break;
 				}
+			}
+				
+			
 		}
 	}
 	

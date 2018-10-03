@@ -31,13 +31,13 @@ public class StateHandler{
 				
 
 			//End comment
-			if(isSpacePressed && millis()-startMenu.startMenuStartTime > 2000)
+			if(isSpacePressed && time-startMenu.startMenuStartTime > 2000)
 			{
 				gameState = true;
 				startState = false;
 				
 				game = new GameState();
-				game.gameStartTime = millis();
+				game.gameStartTime = time;
 				levelConfig = new LevelManager(game.gameStartTime);
 
 				
@@ -53,7 +53,7 @@ public class StateHandler{
 			{
 				gameState = false;
 				gameOverState = true;
-				gameOverMenu.gameOverStartStartTime =  millis();
+				gameOverMenu.gameOverStartStartTime =  time;
 				highScores.update(game.score.currentScore);
 				println("In GameOverState");
 				background(0, 0, 0);
@@ -70,7 +70,7 @@ public class StateHandler{
 			{
 				startState = true;
 				gameOverState = false;
-				startMenu.startMenuStartTime = millis();
+				startMenu.startMenuStartTime = time;
 				println("In StartState");
 				background(0, 0, 0);
 				highScores.saveHighScores();
@@ -99,9 +99,9 @@ public class StateHandler{
 		{
 			background(0, 0, 0);
 			game.draw();
-			highScores.draw();
 			cursor(ARROW);
 			gameOverMenu.draw();
+			highScores.draw();
 			//Display Game Over screen
 		}
 	}

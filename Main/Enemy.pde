@@ -14,23 +14,25 @@ public class Enemy extends GameObject {
 	}
 
 	public void update() {
-		move();
-		if(position.x > width)
-			position.x -= width;
-		
-		if(despawn)
+		if(!despawn)
 		{
-			directionVelocity.mult(0);
-		}
-
-
+			move();
+			if(position.x > width)
+				position.x -= width;
+			
+		} 
 	}
 	public boolean canShot()
 	{
-		millisekundsPast = millis() - startTimeAfterShot;
+		if(despawn)
+		{
+			return false;
+		}
+
+		millisekundsPast = time - startTimeAfterShot;
 		if(millisekundsPast > cooldownGuns)
 		{
-			startTimeAfterShot = millis();
+			startTimeAfterShot = time;
 			return true;
 		} else{
 			return false;
@@ -41,7 +43,7 @@ public class Enemy extends GameObject {
 		{
 			pushMatrix();
 			translate(this.position.x, this.position.y);
-			rotate(HALF_PI);
+			rotate(this.directionVelocity.heading() + HALF_PI);
 		
 			imageMode(CENTER);
 			image(sprite, 0, 0);

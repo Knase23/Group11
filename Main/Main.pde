@@ -1,5 +1,6 @@
 import ddf.minim.*;
-float time, deltaTime;
+float deltaTime;
+int time;
 StateHandler state;
 PImage[] assets;
 //SoundFile mainMusic;
@@ -12,6 +13,7 @@ void setup()
 	settingsForSound = new Minim(this);
 	mainMusic = settingsForSound.loadFile("/sound/Cygnus_squad_ost.mp3");
 	mainMusic.play();
+	mainMusic.loop();
 	
 	state = new StateHandler();
 	//frameRate(60);
@@ -20,7 +22,7 @@ void setup()
 
 void draw () 
 {
-	long currentTime = millis();
+	int currentTime = millis();
 	deltaTime =  (currentTime - time) * 0.001f;
 	
 	println("FPS: "+frameRate);

@@ -16,7 +16,7 @@ public class ScoreSystem {
 		textAlign(LEFT);
 		rectMode(CORNER);
 		fill(255, 255, 255);
-		text("SCORE: "+currentScore, 10, 40);
+		text("SCORE: "+ currentScore, 10, 40);
 	}
 	public void killTheEnemy () {
 		killScore += 10;
