@@ -69,7 +69,7 @@ public class GameState{
 		
 		for (int i = 0; i < numberOfEnemyBullets; ++i) {
 			enemyBullets[i].update();
-			if(checkCollision(enemyBullets[i],playerShip))
+			if(checkCollision(enemyBullets[i],playerShip) && !enemyBullets[i].despawn)
 			{
 				playerShip.despawn = true;
 				enemyBullets[i].despawn = true;
