@@ -6,7 +6,7 @@ public class Player extends GameObject{
 	float mouseAngle = 0;
 	public Player () {
 		super(height/2,width/2,50);
-		sprite = loadImage("/images/player.png");
+		sprite = assets[0];
 		speed = 10;
 		
 	}

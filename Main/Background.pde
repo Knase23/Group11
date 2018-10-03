@@ -98,9 +98,9 @@ class Nebula
 
     public Nebula(float x, float y)
     {
-		nebulaSprite = loadImage("/images/nebulaOne.png");
+		nebulaSprite = assets[3];
 
-    	nebulaSprite2 = loadImage("/images/nebulaTwo.png");
+    	nebulaSprite2 = assets[4];
 
         position = new PVector(x, y);
         velocity = new PVector(0,random(0.2, 0.5));

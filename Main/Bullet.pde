@@ -4,7 +4,7 @@ public class Bullet extends GameObject {
 	float startAnimate = 0;
 	public Bullet (PVector startpos, PVector direction, boolean playerShot) {
 		super();
-		sprite = loadImage("/images/explode.png");
+		sprite = assets[1];
 		position.x = startpos.x;
 		position.y = startpos.y;
 

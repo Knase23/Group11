@@ -46,6 +46,7 @@ public class StateHandler{
 				
 			}	
 
+			//End comment
 			if(isSpacePressed && millis()-startMenuStartTime > 2000)
 			{
 				gameState = true;
@@ -53,7 +54,6 @@ public class StateHandler{
 				gameStartTime = millis();
 				println("In GameState");
 			}
-			//End comment
 
 		} else if(gameState)
 		{

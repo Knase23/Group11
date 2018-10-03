@@ -4,7 +4,7 @@ public class Enemy extends GameObject {
 	float cooldownGuns = 2000;
 	public Enemy (){
 		super(random(0,10),random(10, height - 10), 50);
-		sprite = loadImage("/images/enemyOne.png");
+		sprite = assets[2];
 
 		directionVelocity.x = random(1.5, 4.5);
 	}
