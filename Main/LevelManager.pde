@@ -32,7 +32,7 @@ public  class LevelManager {
 			spawnAfter(5,state);
 			spawnAfter(9,state);			
 		}
-		if (secondsPast%15 == 14  && secondsPastChanged) 
+		if (secondsPast%10 == 9  && secondsPastChanged) 
 		{
 			difficultyChanger++;	
 		}
