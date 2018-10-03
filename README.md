@@ -100,3 +100,5 @@ Plans:
 + Start and discuss on a Point system
 + Start and discuss on a Health/Shield system
 + Start and discuss on Save and load for a Highscore list.
++ nemesis / anti cheat, new enemey that chases player after being still/afk for X seconds
++ Lebelmanager: make waves of enemies or that enemies spawn faster the more time pass.
