@@ -22,7 +22,7 @@ public class ScoreSystem {
 		killScore += 10;
 	}
 	public void survivalTimeToScore(int survivalTime){
-		scoreTime = survivalTime / (10 *1000);  // 1 point per 10 sec.  survivalTime/x    x = point per sec * 1000
+		scoreTime = survivalTime / (secPoint *1000);  // 1 point per 10 sec.  survivalTime/x    x = point per sec * 1000
 	}
 }
 

@@ -23,22 +23,22 @@ public class GameOverState {
 	{
 		// Here we draw out everything / display what we want on screen 
 		textAlign(CENTER);
-			rectMode(CENTER);
-			textSize(24);
-			text("Game Over maaan!!", width/2, height/2 - 50);
-			text("Game Over!!!", width/2, height/2 - 25);
+		rectMode(CENTER);
+		textSize(24);
+		text("Game Over maaan!!", width/2, height/2 - 50);
+		text("Game Over!!!", width/2, height/2 - 25);
+		textSize(14);
+		text("Time: "+(survivalTime / 1000) +"."+ survivalTime % 1000 + "s", width/2 + 50, height/2 + 40);
+		text("Kills: "+ kills, width/2-50, height/2 + 40);
+		
+		if(ableToProceed)
+		{	
 			textSize(14);
-			text("Time: "+(survivalTime / 1000) +"."+ survivalTime % 1000 + "s", width/2 + 50, height/2 + 40);
-			text("Kills: "+ kills, width/2-50, height/2 + 40);
-			
-			if(ableToProceed)
-			{	
-				textSize(14);
-				text("Press \"Space\" to get to Start Menu", width/2, height/2);
-			} else {
-				textSize(14);
-				text("Please Wait: "+ timeUntilProceed +"s" , width/2, height/2);
-			}
+			text("Press \"Space\" to get to Start Menu", width/2, height/2);
+		} else {
+			textSize(14);
+			text("Please Wait: "+ timeUntilProceed +"s" , width/2, height/2);
+		}
 	}
 
 }
