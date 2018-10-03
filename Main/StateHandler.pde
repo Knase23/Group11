@@ -87,6 +87,7 @@ public class StateHandler{
 		{
 			background(0, 0, 0);
 			//Display Start Menu screen
+			highScores.draw();
 			startMenu.draw();
 		}
 		if(gameState && game != null)
