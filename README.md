@@ -101,4 +101,11 @@ Plans:
 + Start and discuss on a Health/Shield system
 + Start and discuss on Save and load for a Highscore list.
 + nemesis / anti cheat, new enemey that chases player after being still/afk for X seconds
-+ Lebelmanager: make waves of enemies or that enemies spawn faster the more time pass.
++ Levelmanager: make waves of enemies or that enemies spawn faster the more time pass.
+
+
+backround works better now. Point system added so that how much points you get is easy to change. Nemesis art is finished but not coded yet.  Levelmanager decrease the spawn enemy interval.  
+
+Bugs: fist when editing level manager, it made a big wave of enemies at some point instead of shortening spawn time interval.   
+
+Hard parts:
