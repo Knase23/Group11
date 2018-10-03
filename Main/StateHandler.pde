@@ -35,9 +35,10 @@ public class StateHandler{
 				startState = false;
 				
 				game = new GameState();
-				levelConfig = new LevelManager(gameStartTime);
-
 				game.gameStartTime = millis();
+				levelConfig = new LevelManager(game.gameStartTime);
+
+				
 				println("In GameState");
 			}
 
