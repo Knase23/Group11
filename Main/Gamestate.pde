@@ -1,6 +1,7 @@
 public class GameState{
 	BackgroundManager backgroundManager;
 	Crosshair crosshair = new Crosshair();
+	ScoreSystem score = new ScoreSystem();
 	 	
 	int gameStartTime;
 
@@ -40,6 +41,7 @@ public class GameState{
 		crosshair.update();
 		playerShip.update();
 		playerSurvivalTime = millis() - gameStartTime;
+		score.survivalTimeToScore(playerSurvivalTime);
 		if(playerShip.canShot() && playerShip.wantToShot)
 		{
 			shotFired(playerShip);
@@ -61,7 +63,7 @@ public class GameState{
 				{
 					enemies[j].despawn = true;
 					playerBullets[i].despawn = true;
-					playerEnemyKills++;
+					score.killTheEnemy();
 				}
 				
 			}
@@ -95,6 +97,7 @@ public class GameState{
 		for (int i = 0; i < numberOfEnemyBullets; ++i) {
 			enemyBullets[i].draw();
 		}	
+		score.score();
 			
 	}
 	public boolean gameOver()
