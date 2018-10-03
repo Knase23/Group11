@@ -1,6 +1,9 @@
 public class GameState{
 	BackgroundManager backgroundManager;
 	Crosshair crosshair = new Crosshair();
+	 	
+	int gameStartTime;
+
 	int numberOfStars = 50;
 	int numberOfNebula = 4;
 
@@ -27,7 +30,7 @@ public class GameState{
 		maxNumberOfPlayerBullets = 30;
 		playerBullets = new Bullet[maxNumberOfPlayerBullets];
 	}
-	public void update(int gameStartTime) {
+	public void update() {
 		backgroundManager.update();
 		crosshair.update();
 		playerShip.update();
@@ -75,6 +78,7 @@ public class GameState{
 		crosshair.draw();
 		backgroundManager.draw();
 		playerShip.draw();
+		
 			
 
 		for (int i = 0; i < numberOfEnemies; ++i) {
