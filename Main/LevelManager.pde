@@ -42,7 +42,7 @@ public  class LevelManager {
 	void spawnAfter(int seconds, GameState state)
 	{
 		if (secondsPast % seconds == seconds-1 && secondsPastChanged ){
-			println("Spawn Enemy");
+			
 			
 			state.spawnEnemy(); 
 		}

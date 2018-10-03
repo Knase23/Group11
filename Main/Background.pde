@@ -118,7 +118,6 @@ class Nebula
     {
         if (position.y >= height+100)
         {
-        	println("Nebula goes to top");
             position.y -= height + 200;
             position.x= random(10, width-10);
             velocity.y= random(0.2, 0.5);

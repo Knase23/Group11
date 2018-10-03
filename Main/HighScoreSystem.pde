@@ -32,18 +32,28 @@ public class HighScoreSystem {
 			    e.printStackTrace();
 			   }
 		}
+		sortHighScores();
 
 	}
 	public void update(int currentScore)
 	{
-
-		if(highScoresScore[numberOfSavedScores] < 0)
+		
+		if(highScoresScore[4] < currentScore)
 		{
-			highScoresNames[numberOfSavedScores] = "Jesper";
-			highScoresScore[numberOfSavedScores] = currentScore;
-			numberOfSavedScores++;
+			highScoresNames[4] = "Jesper";
+			highScoresScore[4] = currentScore;
 		}
+		sortHighScores();
 
+	}
+	public void draw()
+	{	textAlign(CENTER);
+		textSize(24);
+		text("Highscore", width/2, height/2 + 25);
+		textSize(14);
+		for (int i = 0; i < numberOfSavedScores; ++i) {
+			text(highScoresNames[i] + " : " + highScoresScore[i], width/2, height/2 +50 + (15 *i+1));
+			}	
 	}
 	public void saveHighScores()
 	{

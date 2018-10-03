@@ -99,6 +99,7 @@ public class StateHandler{
 		{
 			background(0, 0, 0);
 			game.draw();
+			highScores.draw();
 			cursor(ARROW);
 			gameOverMenu.draw();
 			//Display Game Over screen

@@ -1,6 +1,7 @@
 float time, deltaTime;
 StateHandler state;
 PImage[] assets;
+
 void setup() 
 {
 	size (800, 800);
@@ -20,9 +21,15 @@ void draw ()
 	state.draw();
 	time = currentTime;
 }
+void exit()
+{
+	println("Exiting sketch");
+	state.highScores.saveHighScores();
+	super.exit();
+}
 
 public void LoadInAllImages() {
-	assets = new PImage[5];
+	assets = new PImage[6];
 	//pla
 	assets[0] = loadImage("/images/player.png");
 	assets[1] = loadImage("/images/explode.png");
@@ -33,5 +40,6 @@ public void LoadInAllImages() {
 	// Background Assets
 	assets[3] = loadImage("/images/nebulaOne.png");
 	assets[4] = loadImage("/images/nebulaTwo.png");
-	
+	assets[5] = loadImage("/images/logo.png");
+ 	
 }

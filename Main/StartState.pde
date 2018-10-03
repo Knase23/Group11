@@ -3,8 +3,10 @@ public class StartState {
 	int timeUntilProceed;
 	boolean ableToProceed;
 	BackgroundManager back;
+	PImage logo;
 	public StartState () {
 		back = new BackgroundManager(50,10);
+		logo = assets[5];
 	}
 	public void update()
 	{
@@ -19,16 +21,13 @@ public class StartState {
 		back.draw();
 		textAlign(CENTER);
 		rectMode(CENTER);
-		textSize(24);
-		text("LOGO", width/2, height/2 - 75); 
-		text("+", width/2, height/2 - 50); 
-		text("Cygnus Squad", width/2, height/2 - 25); 
+		imageMode(CENTER);
+		image(logo, width/2,height/2 -75);
+		textSize(14);
 		if(ableToProceed)
 		{	
-			textSize(14);
 			text("Press \"Space\" to start", width/2, height/2);
 		} else {				
-			textSize(14);
 			text("Please Wait: "+ timeUntilProceed +"s" , width/2, height/2);		
 		}
 	}
