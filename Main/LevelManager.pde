@@ -2,7 +2,9 @@ public  class LevelManager {
 	int secondsPast = 0;
 	int pastSecond = 0;
 	int startTime = 0;
+	int difficultyChanger = 1;
 	boolean secondsPastChanged = false;
+
 	/* 
 	 Level Manager is used to determine when enemys will spawn
 	 As of right now it spawns a enemy every 5th second and every 9th.
@@ -26,8 +28,14 @@ public  class LevelManager {
 		} else {
 			secondsPastChanged = false;
 		}
-		spawnAfter(5,state);
-		spawnAfter(9,state);
+		for (int i = 0; i < difficultyChanger; ++i) {
+			spawnAfter(5,state);
+			spawnAfter(9,state);			
+		}
+		if (secondsPast%15 == 14  && secondsPastChanged) 
+		{
+			difficultyChanger++;	
+		}
 			
 	}
 
