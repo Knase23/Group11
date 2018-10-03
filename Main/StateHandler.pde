@@ -8,11 +8,13 @@ public class StateHandler{
 	GameOverState gameOverMenu;
 
 	LevelManager levelConfig;
+	HighScoreSystem highScores;
 
 	public StateHandler () {
 		levelConfig = new LevelManager();
 		gameOverMenu = new GameOverState();
 		startMenu = new StartState();
+		highScores = new HighScoreSystem();
 	}
 	public void update()
 	{
@@ -52,6 +54,7 @@ public class StateHandler{
 				gameState = false;
 				gameOverState = true;
 				gameOverMenu.gameOverStartStartTime =  millis();
+				highScores.update(game.score.currentScore);
 				println("In GameOverState");
 				background(0, 0, 0);
 			}
@@ -70,6 +73,7 @@ public class StateHandler{
 				startMenu.startMenuStartTime = millis();
 				println("In StartState");
 				background(0, 0, 0);
+				highScores.saveHighScores();
 			}
 		}
 
