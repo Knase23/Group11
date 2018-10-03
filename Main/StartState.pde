@@ -1,6 +1,6 @@
-public class GameOverMenu {
+public class StartState {
 
-	public GameOverMenu () {
+	public StartState () {
 		
 	}
 	public void update()
