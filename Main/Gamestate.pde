@@ -27,13 +27,13 @@ public class GameState{
 		
 
 		// Change this or make a function that makes us able to change during start menu or a settings menu.
-		maxNumberOfEnemies = 30;
+		maxNumberOfEnemies = 15;
 
 		enemies = new Enemy[maxNumberOfEnemies];	
 
 		maxNumberOfEnemyBullets = 100;
 		enemyBullets = new Bullet[maxNumberOfEnemyBullets];
-		maxNumberOfPlayerBullets = 100;
+		maxNumberOfPlayerBullets = 30;
 		playerBullets = new Bullet[maxNumberOfPlayerBullets];
 	}
 	public void update() {
@@ -52,7 +52,7 @@ public class GameState{
 			enemies[i].update();
 			if(((Enemy)enemies[i]).canShot() && !enemies[i].despawn)
 			{
-				shotFired(enemies[i]);
+				//shotFired(enemies[i]);
 			}
 		}		
 		for (int i = 0; i < numberOfPlayerBullets; ++i) {
