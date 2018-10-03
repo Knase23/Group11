@@ -52,7 +52,7 @@ public class GameState{
 			enemies[i].update();
 			if(((Enemy)enemies[i]).canShot() && !enemies[i].despawn)
 			{
-				//shotFired(enemies[i]);
+				shotFired(enemies[i]);
 			}
 		}		
 		for (int i = 0; i < numberOfPlayerBullets; ++i) {
