@@ -12,7 +12,7 @@ public class ScoreSystem {
 
 	textsize(32);
 	fill(255, 255, 255);
-	text(currentScore, 10, 20);
+	text('SCORE'currentScore, 10, 20);
 	
 		currentscore = scoreTime + killScore ; 
 
