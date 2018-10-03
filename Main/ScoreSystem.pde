@@ -1,14 +1,16 @@
 public class ScoreSystem {
 	
 	int currentScore = 0;
-	int killScore = 0 ;
-	int scoreTime = 0 ;
-	int survivalTime = 0;
+	int killScore =0 ;
+	int scoreTime =0 ;
+	int survivalTime =0;
+	int secPoint = 10;
 	public ScoreSystem () {
 		
 	}
 
 	public void score () {
+
 		currentScore = scoreTime + killScore; 
 		textSize(32);
 		textAlign(LEFT);
@@ -22,5 +24,5 @@ public class ScoreSystem {
 	public void survivalTimeToScore(int survivalTime){
 		scoreTime = survivalTime / (10 *1000);  // 1 point per 10 sec.  survivalTime/x    x = point per sec * 1000
 	}
-	 	
 }
+
