@@ -109,3 +109,13 @@ backround works better now. Point system added so that how much points you get i
 Bugs: fist when editing level manager, it made a big wave of enemies at some point instead of shortening spawn time interval.   
 
 Hard parts:
+
+
+###### Thursday
+Plans
++ Add soundtrack
++ Add Sounds
++ Add nemesis
+
+
+Hard parts: to be able to add sounds, a new library had to be installed manually in processing.
