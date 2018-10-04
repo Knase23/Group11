@@ -5,15 +5,16 @@ StateHandler state;
 PImage[] assets;
 //SoundFile mainMusic;
 Minim settingsForSound;
-AudioPlayer mainMusic;
+AudioPlayer[] sounds;
 void setup() 
 {
 	size (800, 800);
 	LoadInAllImages(); 
 	settingsForSound = new Minim(this);
-	mainMusic = settingsForSound.loadFile("/sound/Cygnus_squad_ost.mp3");
-	mainMusic.play();
-	mainMusic.loop();
+	LoadInAllSounds();
+	sounds[0].play();
+	sounds[0].loop();
+
 	
 	state = new StateHandler();
 	//frameRate(60);
@@ -25,7 +26,7 @@ void draw ()
 	int currentTime = millis();
 	deltaTime =  (currentTime - time) * 0.001f;
 	
-	println("FPS: "+frameRate);
+	//println("FPS: "+frameRate);
 	state.update();
 	state.draw();
 	time = currentTime;
@@ -51,4 +52,10 @@ public void LoadInAllImages() {
 	assets[4] = loadImage("/images/nebulaTwo.png");
 	assets[5] = loadImage("/images/logo.png");
  	
+}
+public void LoadInAllSounds()
+{
+	sounds = new AudioPlayer[1];
+
+	sounds[0] =  settingsForSound.loadFile("/sound/Cygnus_squad_ost.mp3"); // Main music
 }
