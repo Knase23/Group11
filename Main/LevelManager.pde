@@ -31,9 +31,12 @@ public  class LevelManager {
 			secondsPastChanged = false;
 		}
 		for (int i = 0; i < difficultyChanger; ++i) {
-			spawnAfter(5,state);
-			spawnAfter(9,state);			
+			spawnAfter(5,state,1);
+			spawnAfter(9,state,1);			
 		}
+
+		spawnAfter(10,state,2);
+		
 		if (secondsPast%10 == 9  && secondsPastChanged) 
 		{
 			difficultyChanger++;	
@@ -57,12 +60,14 @@ public  class LevelManager {
 			
 	}
 
-	void spawnAfter(int seconds, GameState state)
+	void spawnAfter(int seconds, GameState state, int type)
 	{
 		if (secondsPast % seconds == seconds-1 && secondsPastChanged ){
 			
-			
-			state.spawnEnemy(); 
+			if(type == 1)
+				state.spawnEnemy();
+			if(type == 2)
+				state.spawnNemesis(); 
 		}
 	}
 }
