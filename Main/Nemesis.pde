@@ -15,7 +15,13 @@ public void nemesisTimer (Player player)
 			noMoveTimer= 0;
 		}
   		
-  	
+  		directionVelocity.y = player.position.y; 
+		directionVelocity.x = player.position.x; // temporary placement
+    }
+    public void move () {
+    	
+		directionVelocity.setMag(5);
+		super.move();
     }
 }
 

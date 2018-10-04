@@ -39,14 +39,15 @@ void exit()
 }
 
 public void LoadInAllImages() {
-	assets = new PImage[6];
+	assets = new PImage[7];
 	//pla
 	assets[0] = loadImage("/images/player.png");
 	assets[1] = loadImage("/images/explode.png");
 
 	// Enemy assets
 	assets[2] = loadImage("/images/enemyOne.png");
-	
+	assets[6] = loadImage("/images/nemesis.png");
+
 	// Background Assets
 	assets[3] = loadImage("/images/nebulaOne.png");
 	assets[4] = loadImage("/images/nebulaTwo.png");
@@ -55,7 +56,7 @@ public void LoadInAllImages() {
 }
 public void LoadInAllSounds()
 {
-	sounds = new AudioPlayer[1];
+	sounds = new AudioPlayer[7];
 
 	sounds[0] =  settingsForSound.loadFile("/sound/Cygnus_squad_ost.mp3"); // Main music
 	sounds[1] =  settingsForSound.loadFile("/sound/Cygnus_squad_intro.mp3"); // start menu music
