@@ -59,6 +59,10 @@ public class GameState{
 				{
 					shotFired(enemies[i]);
 				}
+				if(enemies[i] instanceof Nemesis)
+				{
+					((Nemesis)enemies[i]).nemesisPlayerLocationUpdate(playerShip);
+				}
 			}
 		}		
 		for (int i = 0; i < maxNumberOfPlayerBullets; ++i) {
@@ -148,6 +152,17 @@ public class GameState{
 				break;
 			}
 		}
+	}
+	public void spawnNemesis() {
+
+		for (int i = 0; i < maxNumberOfEnemies; ++i) {
+			if( enemies[i] == null || enemies[i].despawn || i == maxNumberOfEnemies-1)
+			{
+				enemies[i] = new Nemesis();
+				break;
+			}
+		}
+
 	}
 	public void shotFired (GameObject go) 
 	{
