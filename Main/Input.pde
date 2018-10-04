@@ -1,9 +1,13 @@
-
+boolean keyIsPressed = false;
 
 boolean isWpressed, isApressed, isSpressed, isDpressed, isSpacePressed; // isDpressed= true always
+
+boolean isBackspacePressed, isEnterPressed;
+
 boolean isLeftmouseclicked;
 void keyPressed() 
 {
+	keyIsPressed = true;
 	if (keyCode == UP || keyCode == 87) {	 //keyCode 87 = w/W
 		isWpressed= true; 
 	}
@@ -19,12 +23,22 @@ void keyPressed()
 
 	if(keyCode == 32)
 		isSpacePressed = true;
+	if(keyCode == 8)
+		isBackspacePressed = true;
+	
+	if(keyCode == ENTER)
+	{
+		println("ENTER is Pressed");
+		isEnterPressed = true;
+	}
 
 }
 
 
 void keyReleased() 
 {
+	keyIsPressed = false;
+
 	if (keyCode == UP || keyCode == 87) {	 //keyCode 87 = w/W
 		isWpressed= false; 
 	}
@@ -39,6 +53,14 @@ void keyReleased()
 	}
 	if(keyCode == 32)
 		isSpacePressed = false;
+	if(keyCode == 8)
+		isBackspacePressed = false;
+	
+	if(keyCode == ENTER)
+	{
+		println("ENTER is Released");
+		isEnterPressed = false;
+	}
 
 }
 

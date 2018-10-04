@@ -35,12 +35,12 @@ public class HighScoreSystem {
 		sortHighScores();
 
 	}
-	public void update(int currentScore)
+	public void update(int currentScore, String name)
 	{
 		
 		if(highScoresScore[4] < currentScore)
 		{
-			highScoresNames[4] = "Jesper";
+			highScoresNames[4] = name;
 			highScoresScore[4] = currentScore;
 		}
 		sortHighScores();

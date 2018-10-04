@@ -2,7 +2,7 @@ public class GameOverState {
   	int gameOverStartStartTime = 0;
   	int timeUntilProceed;
 	boolean ableToProceed = false;
-
+	TypeInName naming = new TypeInName();
 	int survivalTime = 0;
 	int kills = 0;
 	public GameOverState () {
@@ -17,6 +17,7 @@ public class GameOverState {
 			timeUntilProceed = (2 - (time-gameOverStartStartTime)/1000);
 		}
 		ableToProceed = time-gameOverStartStartTime > 2000;
+		naming.update();
 		//here we check collisions and update information that should be displayed
 	}
 	public void draw()
@@ -40,6 +41,10 @@ public class GameOverState {
 		} else {
 			textSize(14);
 			text("Please Wait: "+ timeUntilProceed +"s" , width/2, height/2);
+		}
+		if(!naming.done)
+		{
+			naming.draw();
 		}
 	}
 

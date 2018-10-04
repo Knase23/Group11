@@ -9,6 +9,7 @@ public class StateHandler{
 
 	LevelManager levelConfig;
 	HighScoreSystem highScores;
+	boolean updatedHighScoreOnce;
 
 	public StateHandler () {
 		levelConfig = new LevelManager();
@@ -54,7 +55,6 @@ public class StateHandler{
 				gameState = false;
 				gameOverState = true;
 				gameOverMenu.gameOverStartStartTime =  time;
-				highScores.update(game.score.currentScore);
 				println("In GameOverState");
 				background(0, 0, 0);
 			}
@@ -64,9 +64,14 @@ public class StateHandler{
 			// Like make sure it displays current score and alive time based on how you performed in gameState.
 			
 			gameOverMenu.update(game);
+			if(gameOverMenu.naming.done && !updatedHighScoreOnce)
+			{
+				highScores.update(game.score.currentScore, gameOverMenu.naming.name);
+				updatedHighScoreOnce = true;
+			}
 			
 			//Press space to create new Game
-			if(isSpacePressed && millis()-gameOverMenu.gameOverStartStartTime > 2000)
+			if(isSpacePressed && millis()-gameOverMenu.gameOverStartStartTime > 2000 && gameOverMenu.naming.done)
 			{
 				startState = true;
 				gameOverState = false;
@@ -74,6 +79,8 @@ public class StateHandler{
 				println("In StartState");
 				background(0, 0, 0);
 				highScores.saveHighScores();
+				updatedHighScoreOnce = false;
+				gameOverMenu.naming.done = false;
 			}
 		}
 
@@ -102,7 +109,10 @@ public class StateHandler{
 			game.draw();
 			cursor(ARROW);
 			gameOverMenu.draw();
-			highScores.draw();
+			if(gameOverMenu.naming.done)
+			{
+				highScores.draw();
+			}
 			//Display Game Over screen
 		}
 	}
