@@ -1,7 +1,7 @@
 public class Shield
 {
 
-	int shieldValue, shieldValueMax, previousShieldValue;
+	int shieldValue, shieldValueMax;
 	float redValue, greenValue;
 	int shieldBarStartPos, shieldBarFinalPos, shieldBarLoss;
 
@@ -9,7 +9,6 @@ public class Shield
 	{
 	    shieldValue=100;
 	    shieldValueMax=100;
-	    previousShieldValue=100;
 	    shieldBarStartPos = 30;
 	    shieldBarFinalPos = 230;
 	    noStroke();
@@ -44,7 +43,6 @@ public class Shield
 	    	fill(redValue, greenValue, 0);
 	    	rect(shieldBarStartPos+i, height-40, 1, 20);
 	    }
-	    previousShieldValue=shieldValue;
 	}
 
 	void drawShieldBarloss()
@@ -52,6 +50,5 @@ public class Shield
 		fill(25);
 		shieldBarLoss=230-(200-shieldValue*2);
 		rect(shieldBarLoss, height-40, 230-shieldBarLoss, 20);
-		previousShieldValue=shieldValue;
 	}
 }
