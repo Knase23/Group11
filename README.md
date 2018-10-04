@@ -116,6 +116,17 @@ Plans
 + Add soundtrack
 + Add Sounds
 + Add nemesis
++ implement shield
+
+Bugs: When trying to time nemesis to arrive after noMoveTime =5 sec instead an army of nemesis spawned immediately
+
+Hard parts: to be able to add sounds, a new library had to be installed manually in processing. To be able to type name in high score. Getting wifi   
 
 
-Hard parts: to be able to add sounds, a new library had to be installed manually in processing.
+
+###### What we learned
++ Printscreen bugs for posterity
++ working with time equations
++ rotation with movement
++ Better to have visible issues
++ Commander swan is the best
