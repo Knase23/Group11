@@ -41,7 +41,7 @@ void exit()
 
 public void LoadInAllImages() {
 	assets = new PImage[7];
-	//pla
+	// Player assets
 	assets[0] = loadImage("/images/player.png");
 	assets[1] = loadImage("/images/explode.png");
 
@@ -53,6 +53,10 @@ public void LoadInAllImages() {
 	assets[3] = loadImage("/images/nebulaOne.png");
 	assets[4] = loadImage("/images/nebulaTwo.png");
 	assets[5] = loadImage("/images/logo.png");
+
+	// Shield Assets
+	assets[6] = loadImage("/images/shield.png");
+	assets[7] = loadImage("/images/shieldUp.png");
  	
 }
 public void LoadInAllSounds()
