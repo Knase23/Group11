@@ -27,6 +27,7 @@ public class StateHandler{
 			//Code that updates Start Menu information
 			// if we have boxes to press on, check if arrow is inside the box and has clicked the box
 			// otherwise just do nothing until a key is pressed, as of current you need to press Space to go to the game
+			sounds[1].play();
 			startMenu.update();
 			//Make everything until next commet into a seperate class or function in a other file
 				
@@ -40,13 +41,15 @@ public class StateHandler{
 				game = new GameState();
 				game.gameStartTime = time;
 				levelConfig = new LevelManager(game.gameStartTime);
-
+				sounds[1].pause();
+				sounds[0].rewind();
 				
 				println("In GameState");
 			}
 
 		} else if(gameState)
 		{
+			sounds[0].play();
 			
 			levelConfig.update(game);
 			game.update();
@@ -57,12 +60,14 @@ public class StateHandler{
 				gameOverMenu.gameOverStartStartTime =  time;
 				println("In GameOverState");
 				background(0, 0, 0);
+				sounds[0].pause();
+				sounds[2].rewind();
 			}
 		
 		} else if (gameOverState) {
 			//Code that updates game over screen information. 
 			// Like make sure it displays current score and alive time based on how you performed in gameState.
-			
+			sounds[2].play();
 			gameOverMenu.update(game);
 			if(gameOverMenu.naming.done && !updatedHighScoreOnce)
 			{
@@ -81,6 +86,8 @@ public class StateHandler{
 				highScores.saveHighScores();
 				updatedHighScoreOnce = false;
 				gameOverMenu.naming.done = false;
+				sounds[2].pause();
+				sounds[1].rewind();
 			}
 		}
 

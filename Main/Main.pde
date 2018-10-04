@@ -13,8 +13,8 @@ void setup()
 	LoadInAllImages(); 
 	settingsForSound = new Minim(this);
 	LoadInAllSounds();
-	sounds[0].play();
-	sounds[0].loop();
+	
+	
 
 	
 	state = new StateHandler();
