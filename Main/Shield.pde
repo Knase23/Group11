@@ -33,6 +33,10 @@ public class Shield
 		fill(255);
 		String shieldValueString = str(shieldValue);
 		text(shieldValueString+"%", 240, height-40, 40, 30);
+		if (shieldValue<20)
+		{
+			shielLowWarning();
+		}
 	}
 
 	void drawShieldBar()
@@ -56,6 +60,29 @@ public class Shield
 	void takeDamage()
 	{
 		shieldValue-=10;
+	}
+
+	void shielLowWarning()
+	{
+		if (shieldValue<20)
+		{
+			noFill();
+			strokeWeight(2);
+			if (time/1000 % 2 <1)
+			{
+				stroke(255,0,0);
+			}
+			else
+			{
+				stroke(255,255,0);
+			}
+			rect(shieldBarStartPos, height-40, 200, 20);
+		}
+		else
+		{
+			stroke(25);
+			rect(shieldBarStartPos, height-40, 200, 20);
+		}
 	}
 }
 
