@@ -55,8 +55,8 @@ public void LoadInAllImages() {
 	assets[5] = loadImage("/images/logo.png");
 
 	// Shield Assets
-	assets[6] = loadImage("/images/shield.png");
-	assets[7] = loadImage("/images/shieldUp.png");
+	assets[7] = loadImage("/images/shield.png");
+	assets[8] = loadImage("/images/shieldUp.png");
  	
 }
 public void LoadInAllSounds()
