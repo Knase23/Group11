@@ -40,7 +40,7 @@ void exit()
 }
 
 public void LoadInAllImages() {
-	assets = new PImage[7];
+	assets = new PImage[9];
 	// Player assets
 	assets[0] = loadImage("/images/player.png");
 	assets[1] = loadImage("/images/explode.png");
