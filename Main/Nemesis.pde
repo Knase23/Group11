@@ -2,6 +2,14 @@ public class Nemesis extends Enemy
 {
 int noMoveTimer = 0;
 
+public Nemesis () 
+{
+sprite = assets[6];  // nemesis image
+directionVelocity.y = player.position.y; 		
+directionVelocity.x = player.position.x; // follows player
+
+}
+
 public void nemesisTimer (Player player) 
    {
    	
@@ -15,14 +23,13 @@ public void nemesisTimer (Player player)
 			noMoveTimer= 0;
 		}
   		
-  		directionVelocity.y = player.position.y; 
-		directionVelocity.x = player.position.x; // temporary placement
     }
     public void move () {
     	
 		directionVelocity.setMag(5);
 		super.move();
     }
+
+
+
 }
-
-
