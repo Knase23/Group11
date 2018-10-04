@@ -36,7 +36,7 @@ public  class LevelManager {
 		}
 
 		spawnAfter(10,state,2);
-		
+
 		if (secondsPast%10 == 9  && secondsPastChanged) 
 		{
 			difficultyChanger++;	
@@ -44,17 +44,17 @@ public  class LevelManager {
 		
 		if (abs(state.playerShip.directionVelocity.x) < 0.5  && abs(state.playerShip.directionVelocity.y) <  0.5)
 		{
-			println("startTime-noMoveTimer: "+ (startTime-noMoveTimer));
+			println("startTime-noMoveTimer: "+ ((time -startTime)-noMoveTimer));
 			if( (time-startTime)-noMoveTimer > 5000)
 			{
 				state.spawnNemesis();
-				noMoveTimer = time;
+				noMoveTimer = (time-startTime) ;
 			}
 
 		}		
 		else  
 		{
-			noMoveTimer = time;
+			noMoveTimer = (time-startTime);
 		}
 		
 			
