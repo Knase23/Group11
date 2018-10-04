@@ -7,8 +7,6 @@ public class Shield
 
 	public Shield()
 	{
-		frameRate(1);
-	    size(800,600);
 	    shieldValue=100;
 	    shieldValueMax=100;
 	    previousShieldValue=100;
@@ -26,8 +24,8 @@ public class Shield
 
 	void displayShieldValue()
 	{
-		rect(shieldBarStartPos, height-40, 200, 20);
 		noStroke();
+		rect(shieldBarStartPos, height-40, 200, 20);
 		drawShieldBar();
 		drawShieldBarloss();
 		textSize(16);

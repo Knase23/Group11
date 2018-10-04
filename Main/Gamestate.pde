@@ -16,7 +16,9 @@ public class GameState{
 	Bullet[] enemyBullets, playerBullets;
 	int maxNumberOfEnemies , numberOfEnemies = 0;
 	int maxNumberOfEnemyBullets, numberOfEnemyBullets = 0;
-	int maxNumberOfPlayerBullets, numberOfPlayerBullets = 0; 
+	int maxNumberOfPlayerBullets, numberOfPlayerBullets = 0;
+
+	Shield shield;
 	
 
 	public GameState () {
@@ -35,6 +37,7 @@ public class GameState{
 		enemyBullets = new Bullet[maxNumberOfEnemyBullets];
 		maxNumberOfPlayerBullets = 30;
 		playerBullets = new Bullet[maxNumberOfPlayerBullets];
+		shield = new Shield();
 	}
 	public void update() {
 		backgroundManager.update();
@@ -96,6 +99,7 @@ public class GameState{
 		crosshair.draw();
 		backgroundManager.draw();
 		playerShip.draw();
+		
 
 		for (int i = 0; i < maxNumberOfEnemies; ++i) {
 			if(enemies[i] != null){
@@ -117,7 +121,7 @@ public class GameState{
 			}	
 		}	
 		score.score();
-			
+		shield.draw();	
 	}
 	public boolean gameOver()
 	{
