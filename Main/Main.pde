@@ -68,9 +68,5 @@ public void LoadInAllSounds()
 	soundEffects[1] =  settingsForSound.loadSample("/sound/explosion_fx02.mp3"); // Second explosion sound sprite
 	soundEffects[2] =  settingsForSound.loadSample("/sound/laser_fx01.mp3"); // First laser sound sprite
 	soundEffects[3] =  settingsForSound.loadSample("/sound/laser_fx04.mp3"); // Second laser sound sprite
-	soundEffects[0].mute();
-	soundEffects[1].mute();
-	soundEffects[2].mute();
-	soundEffects[3].mute();
 
 }
