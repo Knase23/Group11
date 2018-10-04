@@ -1,7 +1,8 @@
 public class Shield
 {
 
-	int shieldValue, shieldValueMax;
+	int shieldValue;
+	int shieldValueMax;
 	float redValue, greenValue;
 	int shieldBarStartPos, shieldBarFinalPos, shieldBarLoss;
 
@@ -51,4 +52,10 @@ public class Shield
 		shieldBarLoss=230-(200-shieldValue*2);
 		rect(shieldBarLoss, height-40, 230-shieldBarLoss, 20);
 	}
+
+	void takeDamage()
+	{
+		shieldValue-=10;
+	}
 }
+

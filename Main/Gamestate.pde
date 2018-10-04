@@ -86,8 +86,16 @@ public class GameState{
 				enemyBullets[i].update();
 				if(checkCollision(enemyBullets[i],playerShip))
 				{
-					playerShip.despawn = true;
+					
 					enemyBullets[i].despawn = true;
+					if (shield.shieldValue<10)
+					{
+						playerShip.despawn = true;
+					}
+					else
+					{
+						shield.takeDamage();
+					}
 				}
 		 	}
 		}
@@ -121,7 +129,7 @@ public class GameState{
 			}	
 		}	
 		score.score();
-		shield.draw();	
+		shield.draw();
 	}
 	public boolean gameOver()
 	{
