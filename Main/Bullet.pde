@@ -2,6 +2,7 @@ public class Bullet extends GameObject {
 	color c;
 	float millisekundsPast;
 	float startAnimate = 0;
+	boolean explosionExploding = false;
 	public Bullet (PVector startpos, PVector direction, boolean playerShot) {
 		super();
 		sprite = assets[1];
@@ -16,9 +17,11 @@ public class Bullet extends GameObject {
 		if(playerShot)
 		{
 			c = color(#e25822);
+			soundEffects[2].trigger();
 		}
 		else {
 			c = color(#ff0000);
+			soundEffects[3].trigger();
 			
 		}
 	}
@@ -31,6 +34,8 @@ public class Bullet extends GameObject {
 		if(despawn || outOfBounds)
 		{
 			
+
+
 		} else{
 			move();
 			if(position.x > width  || position.x < 0 || position.y > height ||position.y < 0)
@@ -60,6 +65,11 @@ public class Bullet extends GameObject {
 				startAnimate = time;
 			}
 			millisekundsPast = time - startAnimate;
+			if(!explosionExploding)
+			{
+				soundEffects[0].trigger();
+				explosionExploding = true;
+			}
 		}
 	}
 

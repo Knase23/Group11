@@ -6,6 +6,7 @@ PImage[] assets;
 //SoundFile mainMusic;
 Minim settingsForSound;
 AudioPlayer[] sounds;
+AudioSample[] soundEffects;
 void setup() 
 {
 	size (800, 800);
@@ -56,15 +57,17 @@ public void LoadInAllImages() {
 }
 public void LoadInAllSounds()
 {
-	sounds = new AudioPlayer[7];
+	sounds = new AudioPlayer[3];
 
 	sounds[0] =  settingsForSound.loadFile("/sound/Cygnus_squad_ost.mp3"); // Main music
 	sounds[1] =  settingsForSound.loadFile("/sound/Cygnus_squad_intro.mp3"); // start menu music
 	sounds[2] =  settingsForSound.loadFile("/sound/Cygnus_squad_gameover.mp3"); // Game over sound sprite
-	sounds[3] =  settingsForSound.loadFile("/sound/explosion_fx01.mp3"); // First explosion sound sprite
-	sounds[4] =  settingsForSound.loadFile("/sound/explosion_fx02.mp3"); // Second explosion sound sprite
-	sounds[5] =  settingsForSound.loadFile("/sound/laser_fx01.mp3"); // First laser sound sprite
-	sounds[6] =  settingsForSound.loadFile("/sound/laser_fx04.mp3"); // Second laser sound sprite
-
+	
+	soundEffects = new AudioSample[4];
+	soundEffects[0] =  settingsForSound.loadSample("/sound/explosion_fx01.mp3"); // First explosion sound sprite
+	soundEffects[1] =  settingsForSound.loadSample("/sound/explosion_fx02.mp3"); // Second explosion sound sprite
+	soundEffects[2] =  settingsForSound.loadSample("/sound/laser_fx01.mp3"); // First laser sound sprite
+	soundEffects[3] =  settingsForSound.loadSample("/sound/laser_fx04.mp3"); // Second laser sound sprite
+	
 
 }
