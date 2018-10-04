@@ -103,6 +103,7 @@ public class GameState{
 				}
 		 	}
 		}
+		playerShip.updateShield(shield);
 			
 	}
 	public void draw() 

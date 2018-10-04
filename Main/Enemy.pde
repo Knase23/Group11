@@ -51,7 +51,7 @@ public class Enemy extends GameObject {
 			strokeWeight(2);
 			stroke(0, 0, 255);
 			noFill();
-			ellipse(0, 0, this.hitBox, this.hitBox);
+			//ellipse(0, 0, this.hitBox, this.hitBox);
 
 			popMatrix();
 		}

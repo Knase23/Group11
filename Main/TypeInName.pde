@@ -41,8 +41,9 @@ public class TypeInName {
 	}
 	public void draw()
 	{
-		text("Type in name, press \"Enter\" when done",width/2 , height/2 +200);
-		text(name,width/2 , height/2 +220);
+		text("Type in name, press \"Enter\" when done",width/2 , height/2 +45);
+		textSize(24);
+		text(name,width/2 , height/2 +75);
 	}
 
 }

@@ -4,6 +4,8 @@ public class Player extends GameObject{
 	float timeAfterShot = 0; 
 	float cooldownGuns = 200;
 	float mouseAngle = 0;
+	color c;
+	float shieldAlpha = 255;
 	public Player () {
 		super(height/2,width/2,50);
 		sprite = assets[0];
@@ -26,10 +28,6 @@ public class Player extends GameObject{
 	}
 	
 	public void draw() {
-		
-
-						
-		
 		pushMatrix();
 		translate(this.position.x, this.position.y);
 		rotate(mouseAngle - HALF_PI);
@@ -38,7 +36,7 @@ public class Player extends GameObject{
 		image(sprite, 0, 0);
 		
 		strokeWeight(2);
-		stroke(0, 255, 0);
+		stroke(c);
 		noFill();
 		ellipse(0, 0, this.hitBox, this.hitBox);
 
@@ -84,6 +82,12 @@ public class Player extends GameObject{
 	}
 	public void right(){
 		directionVelocity.x += speed * deltaTime;
+	}
+	public void updateShield(Shield shield)
+	{
+		c = color(shield.redValue,shield.greenValue , 0, shieldAlpha);
+		if(shield.shieldValue < 10)
+				shieldAlpha = 0 ;
 	}
 	
 }
