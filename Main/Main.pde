@@ -58,4 +58,12 @@ public void LoadInAllSounds()
 	sounds = new AudioPlayer[1];
 
 	sounds[0] =  settingsForSound.loadFile("/sound/Cygnus_squad_ost.mp3"); // Main music
+	sounds[1] =  settingsForSound.loadFile("/sound/Cygnus_squad_intro.mp3"); // start menu music
+	sounds[2] =  settingsForSound.loadFile("/sound/Cygnus_squad_gameover.mp3"); // Game over sound sprite
+	sounds[3] =  settingsForSound.loadFile("/sound/explosion_fx01.mp3"); // First explosion sound sprite
+	sounds[4] =  settingsForSound.loadFile("/sound/explosion_fx02.mp3"); // Second explosion sound sprite
+	sounds[5] =  settingsForSound.loadFile("/sound/laser_fx01.mp3"); // First laser sound sprite
+	sounds[6] =  settingsForSound.loadFile("/sound/laser_fx04.mp3"); // Second laser sound sprite
+
+
 }
