@@ -5,6 +5,7 @@ public class Shield
 	int shieldValueMax;
 	float redValue, greenValue;
 	int shieldBarStartPos, shieldBarFinalPos, shieldBarLoss;
+	PImage shieldSprite;
 
 	public Shield()
 	{
@@ -14,6 +15,7 @@ public class Shield
 	    shieldBarFinalPos = 230;
 	    noStroke();
 	    fill(25);
+	    shieldSprite = assets[7];
 	}
 
 	void draw()
@@ -28,11 +30,13 @@ public class Shield
 		rect(shieldBarStartPos, height-40, 200, 20);
 		drawShieldBar();
 		drawShieldBarloss();
-		textSize(16);
-		textAlign(LEFT);
+		textSize(12);
+		textAlign(CENTER);
 		fill(255);
 		String shieldValueString = str(shieldValue);
-		text(shieldValueString+"%", 240, height-40, 40, 30);
+		imageMode(CENTER);
+		image(shieldSprite, 255, height-30);
+		text(shieldValueString+"%", 230, height-40, 50, 30);
 		if (shieldValue<20)
 		{
 			shielLowWarning();
