@@ -22,9 +22,12 @@ public class HighScoreSystem {
 				while((line = input.readLine()) != null && numberOfSavedScores < maxNumberOfSavedScores-1)
 				{
 					String[] pieces = split(line, " : ");
-					highScoresNames[numberOfSavedScores] = pieces[0];
-					highScoresScore[numberOfSavedScores] = int(pieces[1]);
-					numberOfSavedScores++;
+					if(pieces.length == 2)
+					{
+						highScoresNames[numberOfSavedScores] = pieces[0];
+						highScoresScore[numberOfSavedScores] = int(pieces[1]);
+						numberOfSavedScores++;
+					}
 				}
 						// highScoresNames[]
 				
