@@ -95,6 +95,7 @@ public class GameState{
 					if (shield.shieldValue<10)
 					{
 						playerShip.despawn = true;
+						shield.shieldValue=0;
 					}
 					else
 					{
