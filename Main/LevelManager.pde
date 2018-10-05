@@ -49,6 +49,7 @@ public  class LevelManager {
 			{
 				state.spawnNemesis();
 				noMoveTimer = (time-startTime) ;
+				state.shield.repairShield(5);
 			}
 
 		}		
