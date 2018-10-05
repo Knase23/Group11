@@ -157,7 +157,7 @@ public class GameState{
 	public void spawnNemesis() {
 
 		for (int i = 0; i < maxNumberOfEnemies; ++i) {
-			if( enemies[i] == null || enemies[i].despawn || i == maxNumberOfEnemies-1)
+			if( enemies[i] == null || enemies[i].despawn || (i == maxNumberOfEnemies-1 && !(enemies[i] instanceof Nemesis)))
 			{
 				enemies[i] = new Nemesis();
 				break;
