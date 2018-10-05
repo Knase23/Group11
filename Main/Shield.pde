@@ -88,5 +88,23 @@ public class Shield
 			rect(shieldBarStartPos, height-40, 200, 20);
 		}
 	}
+	
+	void repairShield(int amountRepaired)
+	{	
+		if (shieldValue < shieldValueMax)
+		{
+			println("Trying to repair!");
+			if (shieldValue < (shieldValueMax-amountRepaired))
+			{
+				shieldValue+=amountRepaired;
+				println("Repairing shield +5");
+			}
+			else
+			{
+				shieldValue=shieldValueMax;
+				println("Shields are repaired to maximum capacity!");
+			}
+		}
+	}
 }
 
