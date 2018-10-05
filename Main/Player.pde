@@ -6,6 +6,7 @@ public class Player extends GameObject{
 	float mouseAngle = 0;
 	color c;
 	float shieldAlpha = 255;
+	boolean shieldHasBeenRepaired = false;
 	public Player () {
 		super(height/2,width/2,50);
 		sprite = assets[0];
@@ -87,7 +88,14 @@ public class Player extends GameObject{
 	{
 		c = color(shield.redValue,shield.greenValue , 0, shieldAlpha);
 		if(shield.shieldValue < 10)
-				shieldAlpha = 0 ;
+			shieldAlpha = 0 ;
+			shieldHasBeenRepaired = true;
+			
+		if (shieldHasBeenRepaired && shield.shieldValue>0) {
+			shieldHasBeenRepaired=false;
+			shieldAlpha = 255;
+		}
+
 	}
 	
 }
