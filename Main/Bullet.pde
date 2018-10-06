@@ -33,6 +33,8 @@ public class Bullet extends GameObject {
 	public void update() {
 		if(despawn || outOfBounds)
 		{
+			
+
 
 		} else{
 			move();

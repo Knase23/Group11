@@ -6,13 +6,11 @@ public class Enemy extends GameObject {
 		super(random(0,10),random(10, height - 10), 50);
 		sprite = assets[2];
 
-		directionVelocity.x = random(30, 45);
-		directionVelocity.mult(deltaTime);
+		directionVelocity.x = random(1.5, 4.5);
 	}
 
 	public void move() {
 		position.add(directionVelocity);
-
 	}
 
 	public void update() {
@@ -57,12 +55,6 @@ public class Enemy extends GameObject {
 
 			popMatrix();
 		}
-	}
-	public void newEnemy() {
-		this.useExistingToCreateANew(random(0,10),random(10, height - 10), 50);
-		directionVelocity.x = random(1.5, 4.5);
-		millisekundsPast = 0;
-		startTimeAfterShot = 0;
 	}
 
 }

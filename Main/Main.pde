@@ -27,7 +27,7 @@ void draw ()
 	int currentTime = millis();
 	deltaTime =  (currentTime - time) * 0.001f;
 	
-	println("FPS: "+frameRate);
+	//println("FPS: "+frameRate);
 	state.update();
 	state.draw();
 	time = currentTime;

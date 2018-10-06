@@ -32,14 +32,5 @@ public abstract class GameObject
 	{
 		position.add(directionVelocity);
 	}
-	public void useExistingToCreateANew(float x, float y, float diameter)
-	{
-		this.position = new PVector(x,y);
-		this.hitBox = diameter;
-		this.despawn = false;
-		this.outOfBounds = false;
-		this.directionVelocity = new PVector();
-
-	}
 
 }

@@ -25,6 +25,8 @@ public class TypeInName {
 			} else if (!keyIsPressed) {
 				addedOne = false;
 			}
+			
+
 			if(isBackspacePressed && !removedOne && name.length() > 0 )
 			{
 					name = name.substring(0, name.length()-1);
