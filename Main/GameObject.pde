@@ -1,7 +1,7 @@
 public abstract class GameObject 
 {
 	PImage sprite;
-	PVector position, directionVelocity;
+	PVector position, direction;
 	float hitBox, speed;
 	boolean despawn, outOfBounds;
 	public GameObject () 
@@ -10,7 +10,7 @@ public abstract class GameObject
 		this.hitBox = 10;
 		this.despawn = false;
 		this.outOfBounds = false;
-		this.directionVelocity = new PVector();
+		this.direction = new PVector();
 	}
 	public GameObject(float x, float y, float diameter) 
 	{
@@ -18,7 +18,7 @@ public abstract class GameObject
 		this.hitBox = diameter;
 		this.despawn = false;
 		this.outOfBounds = false;
-		this.directionVelocity = new PVector();
+		this.direction = new PVector();
 	}
 	public void update() 
 	{
@@ -30,7 +30,17 @@ public abstract class GameObject
 	}
 	public void move()
 	{
-		position.add(directionVelocity);
+		position.x += direction.x * speed * deltaTime;
+		position.y += direction.y * speed * deltaTime;
+	}
+	public void useExistingToCreateANew()
+	{
+		this.position = new PVector(-10,-10);
+		this.hitBox = 10;
+		this.despawn = false;
+		this.outOfBounds = false;
+		this.direction = new PVector();
+
 	}
 	public void useExistingToCreateANew(float x, float y, float diameter)
 	{
@@ -38,7 +48,7 @@ public abstract class GameObject
 		this.hitBox = diameter;
 		this.despawn = false;
 		this.outOfBounds = false;
-		this.directionVelocity = new PVector();
+		this.direction = new PVector();
 
 	}
 

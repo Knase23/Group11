@@ -13,12 +13,8 @@ void setup()
 	LoadInAllImages(); 
 	settingsForSound = new Minim(this);
 	LoadInAllSounds();
-	
-	
-
-	
 	state = new StateHandler();
-	//frameRate(60);
+	frameRate(30);
 	 
 }
 

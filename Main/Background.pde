@@ -23,28 +23,36 @@ class BackgroundManager
 
      public void update()
     {
-        for(int i = 0; i < stars.length; i++)
+        int biggestNumber = nebulas.length;
+        if(stars.length > nebulas.length)
         {
-            stars[i].update();
+            biggestNumber = stars.length;
         }
-        for(int j = 0; j < nebulas.length; j++)
-        {
-            nebulas[j].update();
-        }
+        for (int i = 0; i < biggestNumber; ++i) {
+            if(i < stars.length)
+                stars[i].update();
+       
+            if(i < nebulas.length)
+                nebulas[i].update();
+        }  
     }
 
 
 
     public void draw()
     {
-        for(int i = 0; i < stars.length; i++)
+        int biggestNumber = nebulas.length;
+        if(stars.length > nebulas.length)
         {
-            stars[i].draw();
+            biggestNumber = stars.length;
         }
-        for(int j = 0; j < nebulas.length; j++)
-        {
-            nebulas[j].draw();
-        }
+        for (int i = 0; i < biggestNumber; ++i) {
+            if(i < stars.length)
+                stars[i].draw();
+       
+            if(i < nebulas.length)
+                nebulas[i].draw();
+        }  
         noTint();
         noStroke();
     }
@@ -53,12 +61,12 @@ class BackgroundManager
 class Star
 {
     PVector position;
-    PVector velocity;
+    float velocity;
 
     public Star(float x, float y)
     {
         position = new PVector(x, y);
-        velocity = new PVector(0,random(0.5, 3));
+        velocity = random(30,50);
 
     }
 
@@ -72,17 +80,17 @@ class Star
 
         }
         
-        position.add(velocity);
+        position.y += velocity * deltaTime;
     }
 
     public void draw()
     {
     	stroke(255,255,255,100);
-    	strokeWeight(velocity.y+3);
+    	strokeWeight(velocity * 0.1f + 3);
         point(position.x, position.y);
 
         stroke(255,255,255,255);
-        strokeWeight(velocity.y);
+        strokeWeight(velocity* 0.1f);
         point(position.x, position.y);
     }
 }
@@ -90,7 +98,7 @@ class Star
 class Nebula
 {
     PVector position;
-    PVector velocity;
+    float velocity;
     PImage nebulaSprite, nebulaSprite2;
     float rotation;
     float nebulaRed, nebulaGreen, nebulaBlue, nebulaAlpha;
@@ -103,7 +111,8 @@ class Nebula
     	nebulaSprite2 = assets[4];
 
         position = new PVector(x, y);
-        velocity = new PVector(0,random(0.2, 0.5));
+        velocity = random(10, 30);
+
         rotation = random(0, 359);
         nebulaAngleOne = random(0, 179);
         nebulaAngleTwo = random(180, 359);
@@ -120,7 +129,7 @@ class Nebula
         {
             position.y -= height + 200;
             position.x= random(10, width-10);
-            velocity.y= random(0.2, 0.5);
+            velocity = random(10, 30);
             rotation = random(0, 359);
 	        nebulaAngleOne = random(0, 179);
 	        nebulaAngleTwo = random(180, 359);
@@ -130,7 +139,7 @@ class Nebula
 	    	nebulaAlpha = random(55, 255);
         }
         
-        position.add(velocity);
+        position.y += velocity * deltaTime;
     }
 
     public void draw()

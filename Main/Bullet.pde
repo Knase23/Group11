@@ -3,15 +3,31 @@ public class Bullet extends GameObject {
 	float millisekundsPast;
 	float startAnimate = 0;
 	boolean explosionExploding = false;
+
+	public Bullet ()
+	{
+		super();
+		sprite = assets[1];
+		position.x = -10;
+		position.y = -10;
+		speed = 2;
+		
+		direction.x = 0;
+		direction.y = 0;
+		
+		hitBox= 5;
+		outOfBounds = true;
+	}
+
 	public Bullet (PVector startpos, PVector direction, boolean playerShot) {
 		super();
 		sprite = assets[1];
 		position.x = startpos.x;
 		position.y = startpos.y;
 
-		directionVelocity.x = direction.x;
-		directionVelocity.y = direction.y;
-		directionVelocity.setMag(7);
+		this.direction.x = direction.x;
+		this.direction.y = direction.y;
+		speed = 2;
 		
 		hitBox= 5;
 		if(playerShot)
@@ -25,11 +41,6 @@ public class Bullet extends GameObject {
 			
 		}
 	}
-
-	public void move() {
-		position.add(directionVelocity);
-	}
-
 	public void update() {
 		if(despawn || outOfBounds)
 		{
@@ -70,5 +81,27 @@ public class Bullet extends GameObject {
 			}
 		}
 	}
+	public void useExistingToCreateANew(PVector startpos, PVector direction, boolean playerShot)
+	{
+		super.useExistingToCreateANew(startpos.x,startpos.y, 5);
+		direction.normalize();
+		this.direction.x = direction.x;
+		this.direction.y = direction.y;
+		speed = 250;
+		if(playerShot)
+		{
+			c = color(#e25822);
+			soundEffects[2].trigger();
+		}
+		else {
+			c = color(#ff0000);
+			soundEffects[3].trigger();
+			
+		}
+		explosionExploding = false;
+		millisekundsPast = 0;
+		startAnimate = 0;
+	}
 
 }
+

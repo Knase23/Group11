@@ -10,7 +10,7 @@ public class Player extends GameObject{
 	public Player () {
 		super(height/2,width/2,50);
 		sprite = assets[0];
-		speed = 10;
+		speed = 0;
 		
 	}
 
@@ -46,6 +46,7 @@ public class Player extends GameObject{
 
 	public void move() {
 		
+
 		if(isWpressed)
 			up();
 		if(isSpressed)
@@ -54,11 +55,13 @@ public class Player extends GameObject{
 			left();
 		if(isDpressed)
 			right();
-		
+		direction.normalize();
+		if(speed > 160)
+			speed = 160;
+		speed *= 0.95f;
 		wantToShot = isLeftmouseclicked;
 
-		directionVelocity.mult(0.95f);
-		position.add(directionVelocity);
+		super.move();
 
 	}
 	public boolean canShot()
@@ -73,16 +76,20 @@ public class Player extends GameObject{
 		}
 	}
 	public void up(){
-		directionVelocity.y += -speed * deltaTime;
+		speed += 10;
+		direction.y += -1;
 	}
 	public void down(){
-		directionVelocity.y += speed * deltaTime;
+		speed += 10;
+		direction.y += 1 ;
 	}
 	public void left(){
-		directionVelocity.x += -speed * deltaTime;
+		speed += 10;
+		direction.x += -1;
 	}
 	public void right(){
-		directionVelocity.x += speed * deltaTime;
+		speed += 10;
+		direction.x += 1;
 	}
 	public void updateShield(Shield shield)
 	{

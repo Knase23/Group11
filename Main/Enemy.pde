@@ -6,13 +6,8 @@ public class Enemy extends GameObject {
 		super(random(0,10),random(10, height - 10), 50);
 		sprite = assets[2];
 
-		directionVelocity.x = random(30, 45);
-		directionVelocity.mult(deltaTime);
-	}
-
-	public void move() {
-		position.add(directionVelocity);
-
+		direction.x = 1;
+		speed = random(40, 45);
 	}
 
 	public void update() {
@@ -45,7 +40,7 @@ public class Enemy extends GameObject {
 		{
 			pushMatrix();
 			translate(this.position.x, this.position.y);
-			rotate(this.directionVelocity.heading() + HALF_PI);
+			rotate(this.direction.heading() + HALF_PI);
 		
 			imageMode(CENTER);
 			image(sprite, 0, 0);
@@ -60,7 +55,8 @@ public class Enemy extends GameObject {
 	}
 	public void newEnemy() {
 		this.useExistingToCreateANew(random(0,10),random(10, height - 10), 50);
-		directionVelocity.x = random(1.5, 4.5);
+		direction.x = 1;
+		speed = random(70, 90);
 		millisekundsPast = 0;
 		startTimeAfterShot = 0;
 	}
