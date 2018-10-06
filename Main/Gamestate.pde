@@ -40,7 +40,7 @@ public class GameState{
 			enemyBullets[i] = new Bullet();
 			enemyBullets[i].despawn = true;
 		}
-		playerBullets = new Bullet[10];
+		playerBullets = new Bullet[20];
 		if(biggestNumberOf < playerBullets.length)
 			biggestNumberOf = playerBullets.length;
 		

@@ -14,7 +14,7 @@ void setup()
 	settingsForSound = new Minim(this);
 	LoadInAllSounds();
 	state = new StateHandler();
-	frameRate(30);
+	frameRate(60);
 	 
 }
 
@@ -64,9 +64,9 @@ public void LoadInAllSounds()
 	sounds[2] =  settingsForSound.loadFile("/sound/Cygnus_squad_gameover.mp3"); // Game over sound sprite
 	
 	soundEffects = new AudioSample[4];
-	soundEffects[0] =  settingsForSound.loadSample("/sound/explosion_fx01.mp3"); // First explosion sound sprite
-	soundEffects[1] =  settingsForSound.loadSample("/sound/explosion_fx02.mp3"); // Second explosion sound sprite
-	soundEffects[2] =  settingsForSound.loadSample("/sound/laser_fx01.mp3"); // First laser sound sprite
-	soundEffects[3] =  settingsForSound.loadSample("/sound/laser_fx04.mp3"); // Second laser sound sprite
+	soundEffects[0] =  settingsForSound.loadSample("/sound/explosion_fx01.mp3",512); // First explosion sound sprite
+	soundEffects[1] =  settingsForSound.loadSample("/sound/explosion_fx02.mp3",512); // Second explosion sound sprite
+	soundEffects[2] =  settingsForSound.loadSample("/sound/laser_fx01.mp3",512); // First laser sound sprite
+	soundEffects[3] =  settingsForSound.loadSample("/sound/laser_fx04.mp3",512); // Second laser sound sprite
 
 }

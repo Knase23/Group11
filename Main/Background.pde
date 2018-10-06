@@ -66,7 +66,7 @@ class Star
     public Star(float x, float y)
     {
         position = new PVector(x, y);
-        velocity = random(30,50);
+        velocity = random(30,70);
 
     }
 
@@ -86,11 +86,11 @@ class Star
     public void draw()
     {
     	stroke(255,255,255,100);
-    	strokeWeight(velocity * 0.1f + 3);
+    	strokeWeight(velocity * 0.04f + 3);
         point(position.x, position.y);
 
         stroke(255,255,255,255);
-        strokeWeight(velocity* 0.1f);
+        strokeWeight(velocity* 0.04f);
         point(position.x, position.y);
     }
 }
@@ -111,7 +111,7 @@ class Nebula
     	nebulaSprite2 = assets[4];
 
         position = new PVector(x, y);
-        velocity = random(10, 30);
+        velocity = random(5, 20);
 
         rotation = random(0, 359);
         nebulaAngleOne = random(0, 179);
@@ -128,8 +128,8 @@ class Nebula
         if (position.y >= height+100)
         {
             position.y -= height + 200;
-            position.x= random(10, width-10);
-            velocity = random(10, 30);
+            position.x = random(10, width-10);
+            velocity = random(5, 20);
             rotation = random(0, 359);
 	        nebulaAngleOne = random(0, 179);
 	        nebulaAngleTwo = random(180, 359);
