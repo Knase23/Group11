@@ -76,19 +76,19 @@ public class Player extends GameObject{
 		}
 	}
 	public void up(){
-		speed += 10;
+		speed += 1000 *deltaTime;
 		direction.y += -1;
 	}
 	public void down(){
-		speed += 10;
+		speed += 1000 *deltaTime;
 		direction.y += 1 ;
 	}
 	public void left(){
-		speed += 10;
+		speed += 1000 *deltaTime;
 		direction.x += -1;
 	}
 	public void right(){
-		speed += 10;
+		speed += 1000 *deltaTime;
 		direction.x += 1;
 	}
 	public void updateShield(Shield shield)
