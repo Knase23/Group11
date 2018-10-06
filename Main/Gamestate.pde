@@ -17,25 +17,24 @@ public class GameState{
 	int maxNumberOfEnemies , numberOfEnemies = 0;
 	int maxNumberOfEnemyBullets, numberOfEnemyBullets = 0;
 	int maxNumberOfPlayerBullets, numberOfPlayerBullets = 0;
-
+	int biggestNumberOf;
 	Shield shield;
 	
-
 	public GameState () {
 		
 		backgroundManager = new BackgroundManager(numberOfStars, numberOfNebula);
-
 		playerShip = new Player();
-		
-
 		// Change this or make a function that makes us able to change during start menu or a settings menu.
 		maxNumberOfEnemies = 15;
-
+		biggestNumberOf = maxNumberOfEnemies;
 		enemies = new Enemy[maxNumberOfEnemies];	
-
-		maxNumberOfEnemyBullets = 100;
+		maxNumberOfEnemyBullets = maxNumberOfEnemies * 3;
+		if(biggestNumberOf < maxNumberOfEnemyBullets)
+			biggestNumberOf = maxNumberOfEnemyBullets;
 		enemyBullets = new Bullet[maxNumberOfEnemyBullets];
 		maxNumberOfPlayerBullets = 30;
+		if(biggestNumberOf < maxNumberOfPlayerBullets)
+			biggestNumberOf = maxNumberOfPlayerBullets;
 		playerBullets = new Bullet[maxNumberOfPlayerBullets];
 		shield = new Shield();
 	}
@@ -50,9 +49,8 @@ public class GameState{
 			shotFired(playerShip);
 		}
 
-
-		for (int i = 0; i < maxNumberOfEnemies; ++i) {
-			if(enemies[i] != null)
+		for (int i = 0; i < biggestNumberOf; ++i) {
+			if(i < maxNumberOfEnemies && enemies[i] != null)
 			{
 				enemies[i].update();
 				if(((Enemy)enemies[i]).canShot())
@@ -64,28 +62,13 @@ public class GameState{
 					((Nemesis)enemies[i]).nemesisPlayerLocationUpdate(playerShip);
 				}
 			}
-		}		
-		for (int i = 0; i < maxNumberOfPlayerBullets; ++i) {
-			if(playerBullets[i] != null)
+
+			if( i < maxNumberOfEnemies && playerBullets[i] != null)
 			{
 				playerBullets[i].update();
-
-				for (int j = 0; j < maxNumberOfEnemies; ++j) {
-
-					if (enemies[j] != null && checkCollision(playerBullets[i],enemies[j]))
-					{
-						enemies[j].despawn = true;
-						playerBullets[i].despawn = true;
-						score.killTheEnemy();
-					}
-				
-				}
 			}
-		}
-		
-		for (int i = 0; i < maxNumberOfEnemyBullets; ++i)
-		 {
-		 	if(enemyBullets[i] != null)
+
+			if( i < maxNumberOfEnemyBullets && enemyBullets[i] != null)
 		 	{
 				enemyBullets[i].update();
 				if(checkCollision(enemyBullets[i],playerShip))
@@ -103,7 +86,18 @@ public class GameState{
 					}
 				}
 		 	}
-		}
+			//CheckColliison
+			for (int j = 0; j < biggestNumberOf; ++j) {
+
+					if ((j < maxNumberOfEnemies && i < maxNumberOfPlayerBullets ) && checkCollision(playerBullets[i],enemies[j]))
+					{
+						enemies[j].despawn = true;
+						playerBullets[i].despawn = true;
+						score.killTheEnemy();
+					}
+				
+				}
+		}		
 		playerShip.updateShield(shield);
 			
 	}
@@ -113,24 +107,16 @@ public class GameState{
 		crosshair.draw();
 		backgroundManager.draw();
 		playerShip.draw();
-		
-
-		for (int i = 0; i < maxNumberOfEnemies; ++i) {
-			if(enemies[i] != null){
+		for (int i = 0; i < biggestNumberOf; ++i) {
+			if(i < maxNumberOfEnemies && enemies[i] != null){
 
 				enemies[i].draw();
-			}
-		}
-		
-		for (int i = 0; i < maxNumberOfPlayerBullets; ++i) {
-			if(playerBullets[i] != null)
+			}		
+			if(i < maxNumberOfPlayerBullets &&playerBullets[i] != null)
 			{
 				playerBullets[i].draw();
 			}
-		}
-		
-		for (int i = 0; i < maxNumberOfEnemyBullets; ++i) {
-			if(enemyBullets[i] != null){
+			if(i < maxNumberOfEnemyBullets &&enemyBullets[i] != null){
 				enemyBullets[i].draw();
 			}	
 		}	
@@ -141,16 +127,18 @@ public class GameState{
 	{
 		if(playerShip.despawn)
 			return true;
-
 		return false;
 	}
 
 	public void spawnEnemy() {
 
 		for (int i = 0; i < maxNumberOfEnemies; ++i) {
-			if( enemies[i] == null || enemies[i].despawn)
+			if( enemies[i] == null)
 			{
 				enemies[i] = new Enemy();
+				break;
+			} else if (enemies[i].despawn) {
+				enemies[i].newEnemy();
 				break;
 			}
 		}
@@ -158,7 +146,7 @@ public class GameState{
 	public void spawnNemesis() {
 
 		for (int i = 0; i < maxNumberOfEnemies; ++i) {
-			if( enemies[i] == null || enemies[i].despawn || (i == maxNumberOfEnemies-1 && !(enemies[i] instanceof Nemesis)))
+			if( enemies[i] == null || enemies[i].despawn || (i == maxNumberOfEnemies-1 && !(enemies[i] instanceof Nemesis)) )
 			{
 				enemies[i] = new Nemesis();
 				break;
@@ -168,33 +156,24 @@ public class GameState{
 	}
 	public void shotFired (GameObject go) 
 	{
-		if (go instanceof Player) 
+		for(int i = 0; i < biggestNumberOf; ++i)
 		{
-			for (int i = 0; i < maxNumberOfPlayerBullets; ++i) {
+			if (go instanceof Player) 
+			{
 				if(playerBullets[i] == null || playerBullets[i].despawn)
 				{
 				 	playerBullets[i] = new Bullet(go.position, new PVector(mouseX - go.position.x, mouseY - go.position.y), true);
 				 	break;
-				}
+				}				
 			}
-			
-			
-		}
-	
-
-		if(go instanceof Enemy)
-		{
-			for (int i = 0; i < maxNumberOfEnemyBullets; ++i) {
+			if(go instanceof Enemy)
+			{
 				if( enemyBullets[i] == null || enemyBullets[i].despawn)
 				{
 				 	enemyBullets[i] = new Bullet(go.position, go.directionVelocity, false);
 				 	break;
-				}
+				}				
 			}
-				
-			
 		}
-	}
-	
-		
+	}		
 }

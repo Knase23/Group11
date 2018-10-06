@@ -44,7 +44,7 @@ public  class LevelManager {
 		
 		if (abs(state.playerShip.directionVelocity.x) < 0.5  && abs(state.playerShip.directionVelocity.y) <  0.5)
 		{
-			println("startTime-noMoveTimer: "+ ((time -startTime)-noMoveTimer));
+			//println("startTime-noMoveTimer: "+ ((time -startTime)-noMoveTimer));
 			if( (time-startTime)-noMoveTimer > 5000)
 			{
 				state.spawnNemesis();

@@ -19,7 +19,7 @@ public class HighScoreSystem {
 		if(input != null){
 			String line = null;
 			try {
-				while((line = input.readLine()) != null && numberOfSavedScores < maxNumberOfSavedScores-1)
+				while((line = input.readLine()) != null && numberOfSavedScores < maxNumberOfSavedScores)
 				{
 					String[] pieces = split(line, " : ");
 					if(pieces.length == 2)
